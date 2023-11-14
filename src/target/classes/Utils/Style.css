@@ -1,0 +1,42 @@
+.menuItem: hover{
+        -fx-background-color: #730071;
+        -fx-border-color: WHITE;
+        -fx-border-width:7px 0px 7px 7px;
+}
+
+.searchandavatararea{
+         -fx-border-radius: 20;
+         -fx-background-radius: 20;
+}
+
+
+.searchField{
+         -fx-border-radius: 30;
+         -fx-background-radius: 30;
+
+}
+
+.ResultArea{
+         -fx-background-color: WHITE;
+         -fx-background-radius: 5;
+         -fx-border-radius: 5;
+         -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5) ;
+
+}
+.DanhSachTuLienQuan{
+      -fx-background-color: WHITE;
+      -fx-background-radius: 5;
+      -fx-border-radius: 5;
+      -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5) ;
+}
+
+.PanelSearch{
+         -fx-border-radius: 20;
+         -fx-background-radius: 20;
+
+}
+
+.defLabel{
+ -fx-background-color :#442F73;
+
+}
