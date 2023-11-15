@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="paneSwitch" prefHeight="519.0" prefWidth="695.0" style="-fx-background-color: #EEEEEE;" styleClass="PanelSearch" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="31.0" prefHeight="66.0" prefWidth="664.0" style="-fx-background-color: #FFFFFF;" styleClass="searchandavatararea">
+         <children>
+            <TextField fx:id="searchField" layoutX="57.0" layoutY="12.0" prefHeight="38.0" prefWidth="334.0" style="-fx-background-color: #EEEEEE;" styleClass="searchField">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <JFXButton fx:id="smallSearch" layoutX="14.0" layoutY="17.0" prefHeight="30.0" prefWidth="51.0" />
+            <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/image/search__2_-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="31.0" layoutY="124.0" prefHeight="378.0" prefWidth="206.0" styleClass="DanhSachTuLienQuan">
+         <children>
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="90.0" prefWidth="211.0" styleClass="defLabel" text="SIMILAR WORD" textFill="#ece2e2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ListView fx:id="similarLabel" layoutX="-1.0" layoutY="90.0" prefHeight="288.0" prefWidth="210.0" />
+            <ScrollBar layoutX="196.0" layoutY="89.0" orientation="VERTICAL" prefHeight="288.0" prefWidth="13.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="316.0" layoutY="122.0" prefHeight="382.0" prefWidth="331.0" styleClass="ResultArea">
+         <children>
+            <Label fx:id="LabelKetQua" alignment="TOP_CENTER" layoutY="76.0" prefHeight="315.0" prefWidth="341.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="76.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="86.0" prefWidth="338.0" styleClass="defLabel" text="DEFINITION" textFill="#ece2e2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <HBox layoutX="95.0" layoutY="44.0" prefHeight="40.0" prefWidth="242.0">
+               <children>
+                  <JFXButton prefHeight="31.0" prefWidth="63.0">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: transparent;">
+                           <image>
+                              <Image url="@../Utils/image/download-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BOTTOM_RIGHT" ellipsisString="" prefHeight="30.0" prefWidth="34.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/image/download__1_-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton prefHeight="30.0" prefWidth="58.0">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/image/1000_F_209952777_2RA0eIsWgq1H2ZijJGPhOTey5MSVE6z7-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -40,3 +40,33 @@
  -fx-background-color :#442F73;
 
 }
+
+.addLabel{
+-fx-background-color : #00B7FF;
+-fx-border-radius: 10;
+-fx-background-radius: 10;
+}
+
+.addField{
+-fx-border-radius :15;
+-fx-background-radius:15
+}
+
+.confirmButton {
+-fx-background-color : #00B7FF;
+-fx-border-radius: 10;
+-fx-background-radius: 10;
+}
+
+.confirmButton: hover{
+     -fx-background-color : #C6EA8D;
+     -fx-border-radius: 10;
+     -fx-background-radius: 10;
+
+}
+
+.addPane{
+ -fx-background-radius: 20;
+ -fx-border-radius:20;
+
+}

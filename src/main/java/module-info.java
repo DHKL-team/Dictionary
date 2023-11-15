@@ -3,6 +3,7 @@ module Commandline {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires com.jfoenix;
 
     opens Commandline to javafx.fxml;
     exports Commandline;

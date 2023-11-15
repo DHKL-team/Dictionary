@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DictionaryGui.fxml"));
         stage.initStyle(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(fxmlLoader.load(), 880, 548);
+        Scene scene = new Scene(fxmlLoader.load(), 880, 553);
         stage.setTitle("Dictionary Application");
         stage.setScene(scene);
         stage.show();
