@@ -101,7 +101,19 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="paneSwitch" layoutX="-17.0" prefHeight="523.0" prefWidth="694.0" style="-fx-background-color: #EEEEEE;" styleClass="PanelSearch" />
+                  <AnchorPane fx:id="paneSwitch" layoutX="-22.0" prefHeight="523.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF;" styleClass="PanelSearch">
+                     <children>
+                        <ImageView fitHeight="176.0" fitWidth="198.0" layoutX="510.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/image/393cdb6a474e009b92e801ea3d11e608.gif" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="171.0" fitWidth="548.0" layoutX="76.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/image/Titlee.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                </children>
             </AnchorPane>
          </center>

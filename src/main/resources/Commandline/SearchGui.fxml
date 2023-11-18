@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="paneSwitch" prefHeight="519.0" prefWidth="695.0" style="-fx-background-color: #EEEEEE;" styleClass="PanelSearch" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="paneSwitch" prefHeight="519.0" prefWidth="695.0" style="-fx-background-color: #EEEEEE;" styleClass="PanelSearch" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.SearchController">
    <children>
       <AnchorPane layoutX="31.0" prefHeight="66.0" prefWidth="664.0" style="-fx-background-color: #FFFFFF;" styleClass="searchandavatararea">
          <children>
@@ -23,8 +23,8 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <JFXButton fx:id="smallSearch" layoutX="14.0" layoutY="17.0" prefHeight="30.0" prefWidth="51.0" />
-            <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <JFXButton fx:id="smallSearch" layoutX="8.0" layoutY="7.0" prefHeight="46.0" prefWidth="51.0" />
+            <ImageView fx:id="uuu" fitHeight="23.0" fitWidth="26.0" layoutX="22.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/image/search__2_-removebg-preview.png" />
                </image>
@@ -44,7 +44,7 @@
       </AnchorPane>
       <AnchorPane layoutX="316.0" layoutY="122.0" prefHeight="382.0" prefWidth="331.0" styleClass="ResultArea">
          <children>
-            <Label fx:id="LabelKetQua" alignment="TOP_CENTER" layoutY="76.0" prefHeight="315.0" prefWidth="341.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="76.0">
+            <Label fx:id="LabelKetQua" alignment="TOP_LEFT" layoutY="88.0" prefHeight="303.0" prefWidth="345.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="88.0">
                <font>
                   <Font size="14.0" />
                </font>
