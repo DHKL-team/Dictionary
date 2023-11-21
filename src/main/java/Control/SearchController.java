@@ -3,6 +3,9 @@ package Control;
 import Commandline.DictionaryManagement;
 import Commandline.Word;
 import com.jfoenix.controls.JFXButton;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -24,10 +27,10 @@ import Commandline.DictionaryCommandLine;
 
 public class SearchController implements Initializable {
     static boolean flag = true;
-
+    DictionaryCommandLine dictionaryCommandLine = new DictionaryCommandLine();
 
     @FXML
-    private Label LabelKetQua;
+    private TextArea LabelKetQua;
 
     @FXML
     private AnchorPane paneSwitch;
@@ -39,47 +42,70 @@ public class SearchController implements Initializable {
     private ListView<String> similarLabel;
 
     @FXML
-    private JFXButton smallSearch;
+    private ImageView smallSearch;
 
+    private int indexofselectedWord;
+    ObservableList<Word> listWord = FXCollections.observableArrayList();
+    ObservableList<String> list = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-             searchField.setOnKeyTyped(new EventHandler<KeyEvent>() {
+        searchField.setOnKeyTyped(new EventHandler<KeyEvent>() {
 
-                 @Override
-                 public void handle(KeyEvent keyEvent) {
-                     try {
-                         search();
-                     } catch (FileNotFoundException e) {
-                         throw new RuntimeException(e);
-                     }
-                 }
-             });
-             smallSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                 @Override
-                 public void handle(MouseEvent event) {
-                     try {
-                         search();
-                     } catch (FileNotFoundException e) {
-                         throw new RuntimeException(e);
-                     }
-                 }
-             });
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                    try {
+                        search();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+        });
+        smallSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    search();
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     public void search() throws FileNotFoundException {
-        String target = searchField.getText();
-        if (target != null) {
-            DictionaryCommandLine dictionaryCommandLine = new DictionaryCommandLine();
-            if (flag) {
-                dictionaryCommandLine.dictionaryBasic();
-                flag = false;
-            }
-            String str = dictionaryCommandLine.dictionaryLookup(target);
+        list.clear();
+        String target = searchField.getText().trim();
+
+        if (flag) {
+            dictionaryCommandLine.dictionaryBasic();
+            flag = false;
+        }
+        listWord = dictionaryCommandLine.dictionarySearch(dictionaryCommandLine.dictionary.getRoot(), target);
+        for (Word w : listWord) {
+            list.add(w.getWord_target());
+        }
+        similarLabel.setItems(list);
+        String str = dictionaryCommandLine.dictionaryLookup(target);
+        LabelKetQua.setText(str);
+        System.out.println(str);
+    }
+
+
+    public void setListDefault(int index) {
+        if (index == 0) return;
+    }
+
+    @FXML
+    private void handleMouseClickAWord(MouseEvent e){
+        String selectWord = similarLabel.getSelectionModel().getSelectedItem();
+        if (selectWord !=null){
+            String str = dictionaryCommandLine.dictionaryLookup(selectWord);
             LabelKetQua.setText(str);
-            System.out.println(str);
         }
     }
+
 
 }

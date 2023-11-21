@@ -4,33 +4,49 @@ package Commandline;
 import java.io.*;
 import java.util.Scanner;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DictionaryManagement {
     Dictionary dictionary = new Dictionary();
     public void insertFromFile(String file) throws FileNotFoundException {
         File f1 = new File(file);
         Scanner scan = new Scanner(f1);
+        Word word = null;
+        String regex = "@(.+) (/.+/)";
+        Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         while (scan.hasNext()) {
-            String target = scan.next();
-            target = target.substring(0, 1).toLowerCase() + target.substring(1);
-            String explain = scan.nextLine();
-            explain = explain.trim();
-            explain = explain.substring(0, 1).toLowerCase() + explain.substring(1);
-            dictionary.insert(target, explain);
+            String str = scan.nextLine();
+            str = str.toLowerCase();
+            Matcher m = p.matcher(str);
+            if (m.find()) {
+                if (word != null)
+                    dictionary.insert(word);
+                word = new Word(m.group(1), m.group(2), "");
+            } else {
+                if (word != null)
+                    word.addWord_explain(str + '\n');
+            }
         }
     }
 
     public String dictionaryLookup(String target) {
-        return dictionary.search(target).getWord_explain();
+        String result ="";
+        if (dictionary.search(target) != null) {
+            result+=dictionary.search(target).getWord_pronunciation() + '\n' + dictionary.search(target).getWord_explain();
+        }
+        return result;
     }
     public Dictionary getDictionary() {
         return dictionary;
     }
 
     public void addData(String target, String explain) {
-        target = target.substring(0, 1).toLowerCase() + target.substring(1);
-        explain = explain.substring(0, 1).toLowerCase() + explain.substring(1);
         dictionary.insert(target, explain);
+    }
+
+    public void addData(String target, String pronunciation, String explain) {
+        dictionary.insert(new Word(target, pronunciation, explain));
     }
     public void updateData(String target, String explain) {
         if (dictionary.search(target) != null) {
@@ -42,4 +58,3 @@ public class DictionaryManagement {
     }
 
 }
-

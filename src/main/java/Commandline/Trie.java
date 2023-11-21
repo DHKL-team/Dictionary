@@ -3,7 +3,7 @@ package Commandline;
 import java.util.Arrays;
 
 public class Trie {
-    static final int ALPHABET_SIZE = 26;
+    static final int ALPHABET_SIZE = 28;
 
     public static class TrieNode {
         TrieNode[] children = new TrieNode[ALPHABET_SIZE];
@@ -28,7 +28,14 @@ public class Trie {
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            index = key.charAt(level) - 'a';
+            key = key.toLowerCase();
+            if (key.charAt(level) == ' ') {
+                index = 26;
+            } else if (key.charAt(level) == '-') {
+                index = 27;
+            }
+            else index = key.charAt(level) - 'a';
+            if (index < 0 || index > 27) return;
             if (p.children[index] == null) {
                 p.children[index] = new TrieNode();
             }
@@ -37,13 +44,44 @@ public class Trie {
         p.isEndOfWord = true;
         p.word = new Word(key, value);
     }
+
+    public void insert(Word word) {
+        int level;
+        int length = word.getWord_target().length();
+        int index;
+        TrieNode p = root;
+        for (level = 0; level < length; level++) {
+            String key = word.getWord_target();
+            key = key.toLowerCase();
+            if (key.charAt(level) == ' ') {
+                index = 26;
+            } else if (key.charAt(level) == '-') {
+                index = 27;
+            }
+            else index = key.charAt(level) - 'a';
+            if (index < 0 || index > 27) return;
+            if (p.children[index] == null) {
+                p.children[index] = new TrieNode();
+            }
+            p = p.children[index];
+        }
+        p.isEndOfWord = true;
+        p.word = word;
+    }
+
     public Word search(String key) {
         int level;
         int length = key.length();
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            index = key.charAt(level) - 'a';
+            if (key.charAt(level) == ' ') {
+                index = 26;
+            } else if (key.charAt(level) == '-') {
+                index = 27;
+            }
+            else index = key.charAt(level) - 'a';
+            if (index < 0 || index > 27) return null;
             if (index < 0 || p.children[index] == null) {
                 return null;
             }
@@ -60,7 +98,13 @@ public class Trie {
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            index  = key.charAt(level) - 'a';
+            if (key.charAt(level) == ' ') {
+                index = 26;
+            } else if (key.charAt(level) == '-') {
+                index = 27;
+            }
+            else index = key.charAt(level) - 'a';
+            if (index < 0 || index > 27) return null;
             if (p.children[index] == null) {
                 return null;
             }
@@ -75,4 +119,3 @@ public class Trie {
         return null;
     }
 }
-

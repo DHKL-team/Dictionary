@@ -49,12 +49,12 @@ public class Main extends Application {
             protected Scene call() throws Exception {
                 // Simulate a long-running task by pausing for a few seconds
                 try {
-                    Thread.sleep(3500);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 // Create the main scene
-                return new Scene(root, 880, 553);
+                return new Scene(root, 1030, 679);
             }
         };
         renderTask.setOnSucceeded(event -> stage.setScene(renderTask.getValue()));

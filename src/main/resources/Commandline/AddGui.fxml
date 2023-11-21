@@ -9,37 +9,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="701.0" styleClass="addPane" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AddController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="819.0" styleClass="addPane" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AddController">
    <children>
-      <ImageView fitHeight="528.0" fitWidth="711.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" styleClass="addPane">
+      <ImageView fitHeight="624.0" fitWidth="819.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" styleClass="addPane">
          <image>
             <Image url="@../Utils/image/add_bg.png" />
          </image>
       </ImageView>
-      <TextField fx:id="add_EN" alignment="TOP_LEFT" layoutX="42.0" layoutY="168.0" prefHeight="54.0" prefWidth="272.0" styleClass="addField" AnchorPane.bottomAnchor="299.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="387.0">
+      <TextField fx:id="add_EN" alignment="TOP_LEFT" layoutX="50.0" layoutY="178.0" prefHeight="54.0" prefWidth="338.0" styleClass="addField" AnchorPane.bottomAnchor="414.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="431.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></TextField>
-      <JFXButton fx:id="confirmButton" layoutX="245.0" layoutY="487.0" prefHeight="40.0" prefWidth="222.0" styleClass="confirmButton" text="Xác nhận">
+      <JFXButton fx:id="confirmButton" layoutX="328.0" layoutY="561.0" prefHeight="40.0" prefWidth="222.0" styleClass="confirmButton" text="Xác nhận">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Label layoutX="50.0" layoutY="137.0" prefHeight="30.0" prefWidth="118.0" styleClass="addLabel" text="Từ tiếng anh">
+      <Label layoutX="56.0" layoutY="147.0" prefHeight="30.0" prefWidth="118.0" styleClass="addLabel" text="Từ tiếng anh">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="398.0" layoutY="137.0" prefHeight="30.0" prefWidth="118.0" styleClass="addLabel" text="Định nghĩa">
+      <Label layoutX="492.0" layoutY="150.0" prefHeight="30.0" prefWidth="118.0" styleClass="addLabel" text="Định nghĩa">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="add_VN" alignment="TOP_LEFT" layoutX="391.0" layoutY="168.0" prefHeight="283.0" prefWidth="272.0" styleClass="addField" AnchorPane.rightAnchor="42.0">
+      <TextField fx:id="add_VN" alignment="TOP_LEFT" layoutX="497.0" layoutY="181.0" prefHeight="283.0" prefWidth="286.0" styleClass="addField" AnchorPane.rightAnchor="50.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </TextField>
-      <ListView fx:id="suggestList" layoutX="50.0" layoutY="220.0" prefHeight="232.0" prefWidth="258.0" />
+      <ListView fx:id="suggestList" layoutX="56.0" layoutY="232.0" prefHeight="232.0" prefWidth="330.0" />
    </children>
 </AnchorPane>

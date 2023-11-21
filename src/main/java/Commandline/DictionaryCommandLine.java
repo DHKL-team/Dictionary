@@ -1,6 +1,10 @@
 package Commandline;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +14,7 @@ import java.util.ArrayList;
 public class DictionaryCommandLine {
 
     DictionaryManagement dictionaryMng = new DictionaryManagement();
-    Dictionary dictionary = dictionaryMng.getDictionary();
+    public Dictionary dictionary = dictionaryMng.getDictionary();
     List<Word> wordList = new ArrayList<>();
     boolean wordListChange = false;
 
@@ -39,10 +43,10 @@ public class DictionaryCommandLine {
         }
     }
     public void dictionaryBasic() throws FileNotFoundException {
-        String file = ".\\src\\main\\resources\\Utils\\Tu_dien.txt";
+        String file = "./src/main/resources/Utils/tudien.txt";
         dictionaryMng.insertFromFile(file);
         wordListChange = true;
-        showAllWords();
+        //showAllWords();
     }
 
     public String dictionaryLookup(String target) {
@@ -50,8 +54,8 @@ public class DictionaryCommandLine {
     }
 
 
-    public List<Word> dictionarySearch(Trie.TrieNode root, String target) {
-        List<Word> list = new ArrayList<>();
+    public ObservableList<Word> dictionarySearch(Trie.TrieNode root, String target) {
+        ObservableList<Word> list = FXCollections.observableArrayList();
         int level;
         for (int i = 0; i < target.length(); i++) {
             level = target.charAt(i) - 'a';
@@ -143,8 +147,8 @@ public class DictionaryCommandLine {
                     break;
                 case 7:
                 case 8:
-
-                    String file = "C:\\Users\\TUF\\IdeaProjects\\JavaDictionary\\src\\main\\resources\\Utils\\Tu_dien.txt";
+                    String file = scan.nextLine();
+                    file = file.trim();
                     dictionaryImportFromFile(file);
                     wordListChange = true;
                     break;
@@ -158,4 +162,3 @@ public class DictionaryCommandLine {
         }
     }
 }
-

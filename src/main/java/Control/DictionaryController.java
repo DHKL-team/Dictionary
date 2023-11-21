@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import  com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +36,9 @@ public class DictionaryController implements Initializable {
     @FXML
     private AnchorPane paneSwitch;
 
+    @FXML
+    private ImageView miniIcon;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -52,6 +56,13 @@ public class DictionaryController implements Initializable {
         });
         ExitIcon.setOnMouseClicked(event -> {
             System.exit(0);
+        });
+
+        miniIcon.setOnMouseClicked(event -> {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Thu nhỏ màn hình
+            stage.setIconified(true);
         });
     }
     private  void setNode(Node node){

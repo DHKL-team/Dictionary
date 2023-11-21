@@ -10,37 +10,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="878.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.DictionaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1038.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.DictionaryController">
    <children>
       <BorderPane prefHeight="523.0" prefWidth="878.0">
          <top>
-            <Pane prefHeight="32.0" prefWidth="882.0" style="-fx-background-color: #413E7D;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="32.0" prefWidth="1030.0" style="-fx-background-color: #413E7D;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="ExitIcon" fitHeight="27.0" fitWidth="35.0" layoutX="856.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Utils/image/button.png" />
-                     </image>
-                  </ImageView>
                   <Label layoutX="14.0" layoutY="8.0" text="DictionaryVI-EN" textFill="#fffefe">
                      <font>
                         <Font name="Bodoni MT Bold" size="14.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="ExitIcon" fitHeight="27.0" fitWidth="33.0" layoutX="1002.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/image/button.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="miniIcon" fitHeight="25.0" fitWidth="31.0" layoutX="969.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/image/minimize.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </top>
          <left>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="522.0" fitWidth="229.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="650.0" fitWidth="249.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/image/anhnenthanhmenu.png" />
                      </image>
                   </ImageView>
-                  <VBox layoutX="49.0" layoutY="297.0" prefHeight="306.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <VBox layoutX="49.0" layoutY="297.0" prefHeight="405.0" prefWidth="249.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
-                        <JFXButton fx:id="searchButton" alignment="CENTER" prefHeight="70.0" prefWidth="200.0" styleClass="menuItem" text="SEARCH" textFill="#f4eeee">
+                        <JFXButton fx:id="searchButton" alignment="CENTER" prefHeight="78.0" prefWidth="214.0" styleClass="menuItem" text="SEARCH" textFill="#f4eeee">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -52,7 +57,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="gameButton" alignment="CENTER" prefHeight="70.0" prefWidth="200.0" styleClass="menuItem" text="GAME" textFill="#fff6f6">
+                        <JFXButton fx:id="gameButton" alignment="CENTER" prefHeight="78.0" prefWidth="215.0" styleClass="menuItem" text="GAME" textFill="#fff6f6">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -64,7 +69,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="googleTranslateButton" alignment="CENTER" prefHeight="70.0" prefWidth="200.0" styleClass="menuItem" text="GG API" textFill="#fff6f6">
+                        <JFXButton fx:id="googleTranslateButton" alignment="CENTER" prefHeight="78.0" prefWidth="214.0" styleClass="menuItem" text="GG API" textFill="#fff6f6">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -76,7 +81,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="addWordButton" alignment="CENTER" prefHeight="70.0" prefWidth="200.0" styleClass="menuItem" text="ADD" textFill="#fff6f6">
+                        <JFXButton fx:id="addWordButton" alignment="CENTER" prefHeight="78.0" prefWidth="214.0" styleClass="menuItem" text="ADD" textFill="#fff6f6">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -90,9 +95,9 @@
                         </JFXButton>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="118.0" fitWidth="119.0" layoutX="31.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="116.0" fitWidth="123.0" layoutX="55.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/image/spell-book.png" />
+                        <Image url="@../Utils/image/book%20(1).png" />
                      </image>
                   </ImageView>
                </children>
@@ -101,14 +106,14 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="paneSwitch" layoutX="-22.0" prefHeight="523.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF;" styleClass="PanelSearch">
+                  <AnchorPane fx:id="paneSwitch" layoutX="-33.0" prefHeight="641.0" prefWidth="819.0" style="-fx-background-color: #FFFFFF;" styleClass="PanelSearch">
                      <children>
-                        <ImageView fitHeight="176.0" fitWidth="198.0" layoutX="510.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="176.0" fitWidth="198.0" layoutX="629.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Utils/image/393cdb6a474e009b92e801ea3d11e608.gif" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="171.0" fitWidth="548.0" layoutX="76.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="257.0" fitWidth="671.0" layoutX="74.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="74.20000000000005">
                            <image>
                               <Image url="@../Utils/image/Titlee.png" />
                            </image>
