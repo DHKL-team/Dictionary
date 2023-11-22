@@ -1,6 +1,6 @@
 package Alert;
 
-public class Alert {
+public class Alerts {
 
     public void showAlertInfo(String title, String content) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);

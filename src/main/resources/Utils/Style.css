@@ -85,6 +85,9 @@
     -fx-border-radius: 0;
 }
 .list-cell:even{
+
+
+
      -fx-background-color: #f5f6fa;
 }
 .list-cell:odd {

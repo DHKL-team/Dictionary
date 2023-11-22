@@ -1,5 +1,6 @@
 package Control;
 
+import Commandline.Dictionary;
 import Commandline.DictionaryManagement;
 import Commandline.Word;
 import com.jfoenix.controls.JFXButton;
@@ -26,8 +27,13 @@ import java.util.ResourceBundle;
 import Commandline.DictionaryCommandLine;
 
 public class SearchController implements Initializable {
-    static boolean flag = true;
-    DictionaryCommandLine dictionaryCommandLine = new DictionaryCommandLine();
+
+    DictionaryCommandLine dictionaryCommandLine = DictionaryCommandLine.getInstance();
+    @FXML
+    private ImageView deleteButton;
+
+    @FXML
+    private ImageView updateButton;
 
     @FXML
     private TextArea LabelKetQua;
@@ -44,7 +50,7 @@ public class SearchController implements Initializable {
     @FXML
     private ImageView smallSearch;
 
-    private int indexofselectedWord;
+    private int indexOfSelectedWord;
     ObservableList<Word> listWord = FXCollections.observableArrayList();
     ObservableList<String> list = FXCollections.observableArrayList();
 
@@ -55,12 +61,12 @@ public class SearchController implements Initializable {
 
             @Override
             public void handle(KeyEvent keyEvent) {
-                    try {
-                        search();
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
+                try {
+                    search();
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
                 }
+            }
 
         });
         smallSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -73,17 +79,22 @@ public class SearchController implements Initializable {
                 }
             }
         });
+
+        updateButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                 LabelKetQua.setEditable(true);
+                 //saveButton.setVisible(true);
+
+            }
+        });
+        LabelKetQua.setEditable(false);
     }
 
     public void search() throws FileNotFoundException {
         list.clear();
         String target = searchField.getText().trim();
-
-        if (flag) {
-            dictionaryCommandLine.dictionaryBasic();
-            flag = false;
-        }
-        listWord = dictionaryCommandLine.dictionarySearch(dictionaryCommandLine.dictionary.getRoot(), target);
+        listWord = dictionaryCommandLine.dictionarySearch(Dictionary.getInstance().getRoot(), target);
         for (Word w : listWord) {
             list.add(w.getWord_target());
         }
@@ -107,5 +118,9 @@ public class SearchController implements Initializable {
         }
     }
 
+    @FXML
+    private void clickSaveButton(){
+
+    }
 
 }

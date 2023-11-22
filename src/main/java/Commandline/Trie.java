@@ -15,7 +15,7 @@ public class Trie {
             word = null;
             Arrays.fill(children, null);
         }
-    };
+    }
 
     public static TrieNode root = new TrieNode();
 
@@ -81,10 +81,7 @@ public class Trie {
                 index = 27;
             }
             else index = key.charAt(level) - 'a';
-            if (index < 0 || index > 27) return null;
-            if (index < 0 || p.children[index] == null) {
-                return null;
-            }
+            if (index < 0 || index > 27 || p.children[index] == null) return null;
             p = p.children[index];
         }
         if (p.isEndOfWord) {

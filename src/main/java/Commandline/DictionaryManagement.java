@@ -3,17 +3,29 @@ package Commandline;
 
 import java.io.*;
 import java.util.Scanner;
-import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DictionaryManagement {
-    Dictionary dictionary = new Dictionary();
+
+    private DictionaryManagement() {
+
+    }
+
+    public static DictionaryManagement getInstance() {
+        return SingletonHelper.INSTANCE;
+    }
+
+    private static class SingletonHelper {
+        private static final DictionaryManagement INSTANCE = new DictionaryManagement();
+    }
+
+    Dictionary dictionary = Dictionary.getInstance();
     public void insertFromFile(String file) throws FileNotFoundException {
         File f1 = new File(file);
         Scanner scan = new Scanner(f1);
         Word word = null;
-        String regex = "@(.+) (/.+/)";
+        String regex = "@(.+)( /.+/)";
         Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         while (scan.hasNext()) {
             String str = scan.nextLine();
@@ -28,12 +40,18 @@ public class DictionaryManagement {
                     word.addWord_explain(str + '\n');
             }
         }
+        if (word != null)
+            dictionary.insert(word);
     }
 
     public String dictionaryLookup(String target) {
-        String result ="";
-        if (dictionary.search(target) != null) {
-            result+=dictionary.search(target).getWord_pronunciation() + '\n' + dictionary.search(target).getWord_explain();
+        String result = "";
+        if (dictionary.search(target) != null &&  dictionary.search(target).getWord_pronunciation() != null) {
+            result += dictionary.search(target).getWord_pronunciation() + '\n' + dictionary.search(target).getWord_explain();
+            return result;
+        }
+        if (dictionary.search(target) != null){
+            result += dictionary.search(target).getWord_explain();
         }
         return result;
     }
