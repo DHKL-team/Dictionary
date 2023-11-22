@@ -25,7 +25,7 @@ public class DictionaryManagement {
         File f1 = new File(file);
         Scanner scan = new Scanner(f1);
         Word word = null;
-        String regex = "@(.+)( /.+/)";
+        String regex = "@(.+) (/.+/)";
         Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         while (scan.hasNext()) {
             String str = scan.nextLine();
@@ -46,13 +46,14 @@ public class DictionaryManagement {
 
     public String dictionaryLookup(String target) {
         String result = "";
-        if (dictionary.search(target) != null) {
+        if (dictionary.search(target) != null &&  dictionary.search(target).getWord_pronunciation() != null) {
             result += dictionary.search(target).getWord_pronunciation() + '\n' + dictionary.search(target).getWord_explain();
+            return result;
+        }
+        if (dictionary.search(target) != null){
+            result += dictionary.search(target).getWord_explain();
         }
         return result;
-    }
-    public Dictionary getDictionary() {
-        return dictionary;
     }
 
     public void addData(String target, String explain) {

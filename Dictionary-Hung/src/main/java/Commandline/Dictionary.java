@@ -1,6 +1,8 @@
 package Commandline;
 
-public class Dictionary extends Trie {
+public class
+
+Dictionary extends Trie {
     private Dictionary() {
 
     }

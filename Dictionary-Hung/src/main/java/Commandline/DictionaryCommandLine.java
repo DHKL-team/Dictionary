@@ -30,15 +30,20 @@ public class DictionaryCommandLine {
     boolean wordListChange = false;
 
     private void dfs(List<Word> list, Trie.TrieNode root) {
-        for (int i = 0; i < Trie.ALPHABET_SIZE; i++) {
-            Trie.TrieNode tmp = root.children[i];
-            if (tmp != null) {
-                if (tmp.isEndOfWord) {
-                    list.add(tmp.word);
-                }
-                dfs(list, tmp);
-            }
-        }
+       try {
+           for (int i = 0; i < Trie.ALPHABET_SIZE; i++) {
+               Trie.TrieNode tmp = root.children[i];
+               if (tmp != null) {
+                   if (tmp.isEndOfWord) {
+                       list.add(tmp.word);
+                   }
+                   dfs(list, tmp);
+               }
+           }
+       } catch (NullPointerException e){
+           System.out.println("Loi null pointerException");
+       }
+
     }
 
     public void showAllWords() {
@@ -57,7 +62,6 @@ public class DictionaryCommandLine {
         String file = "./src/main/resources/Utils/tudien.txt";
         dictionaryMng.insertFromFile(file);
         wordListChange = true;
-        //showAllWords();
     }
 
     public String dictionaryLookup(String target) {
@@ -75,9 +79,11 @@ public class DictionaryCommandLine {
                 index = 27;
             }
             else index = target.charAt(i) - 'a';
-            root = root.children[index];
+            if (root !=null){
+            root = root.children[index];}
+
         }
-        if (root.isEndOfWord) {
+        if (root!=null && root.isEndOfWord) {
             list.add(root.word);
         }
         dfs(list, root);
@@ -90,15 +96,15 @@ public class DictionaryCommandLine {
 
     public void dictionaryExportToFile() {
         try {
-            FileWriter myWriter = new FileWriter("DictionaryFile(Export).txt");
-            myWriter.write("No   | English         | Vietnamese\n");
+            FileWriter myWriter = new FileWriter("./src/main/resources/Utils/tudien.txt");
             if (wordListChange) {
                 wordList.clear();
                 dfs(wordList, dictionary.getRoot());
             }
-            for (int number = 0; number < wordList.size(); number++) {
-                myWriter.write(String.format("%-5d| %-16s| %1s%n", number + 1, wordList.get(number).getWord_target(),
-                        wordList.get(number).getWord_explain()));
+            for (Word word : wordList) {
+                myWriter.write(String.format("@%s %s\n%s", word.getWord_target()
+                        , word.getWord_pronunciation(),
+                        word.getWord_explain()));
             }
             myWriter.close();
             System.out.println("Exported to File");
