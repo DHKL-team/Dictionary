@@ -26,18 +26,22 @@ public class DictionaryManagement {
         Scanner scan = new Scanner(f1);
         Word word = null;
         String regex = "@(.+) (/.+/)";
+        String regex1 = "@(.+)";
         Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Pattern p1 = Pattern.compile(regex1, Pattern.CASE_INSENSITIVE);
         while (scan.hasNext()) {
             String str = scan.nextLine();
             str = str.toLowerCase();
             Matcher m = p.matcher(str);
+            Matcher m1 = p1.matcher(str);
             if (m.find()) {
-                if (word != null)
-                    dictionary.insert(word);
+                if (word != null) dictionary.insert(word);
                 word = new Word(m.group(1), m.group(2), "");
-            } else {
-                if (word != null)
-                    word.addWord_explain(str + '\n');
+            } else if (m1.find()) {
+                if (word != null) dictionary.insert(word);
+                word = new Word(m1.group(1), "");
+            } else if (word != null) {
+                word.addWord_explain(str + '\n');
             }
         }
         if (word != null)
