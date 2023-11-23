@@ -8,7 +8,7 @@ public class Word {
     public Word(String target, String explain) {
         this.word_target = target;
         this.word_explain = explain;
-        this.word_pronunciation = null;
+        this.word_pronunciation = "";
     }
 
     public Word(String target, String pronunciation, String explain) {

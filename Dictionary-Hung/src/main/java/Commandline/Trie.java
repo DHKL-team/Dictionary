@@ -17,6 +17,12 @@ public class Trie {
         }
     }
 
+    private int convertIndex(char c) {
+        if (c == ' ') return 0;
+        if (c == '-') return 1;
+        return c - 'a' + 2;
+    }
+
     public static TrieNode root = new TrieNode();
 
     public TrieNode getRoot() {
@@ -29,12 +35,7 @@ public class Trie {
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            if (key.charAt(level) == ' ') {
-                index = 26;
-            } else if (key.charAt(level) == '-') {
-                index = 27;
-            }
-            else index = key.charAt(level) - 'a';
+            index = convertIndex(key.charAt(level));
             if (index < 0 || index > 27) return;
             if (p.children[index] == null) {
                 p.children[index] = new TrieNode();
@@ -53,12 +54,7 @@ public class Trie {
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            if (key.charAt(level) == ' ') {
-                index = 26;
-            } else if (key.charAt(level) == '-') {
-                index = 27;
-            }
-            else index = key.charAt(level) - 'a';
+            index = convertIndex(key.charAt(level));
             if (index < 0 || index > 27) return;
             if (p.children[index] == null) {
                 p.children[index] = new TrieNode();
@@ -75,12 +71,7 @@ public class Trie {
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            if (key.charAt(level) == ' ') {
-                index = 26;
-            } else if (key.charAt(level) == '-') {
-                index = 27;
-            }
-            else index = key.charAt(level) - 'a';
+            index = convertIndex(key.charAt(level));
             if (index < 0 || index > 27 || p.children[index] == null) {
                 return null;
             }
@@ -97,12 +88,7 @@ public class Trie {
         int index;
         TrieNode p = root;
         for (level = 0; level < length; level++) {
-            if (key.charAt(level) == ' ') {
-                index = 26;
-            } else if (key.charAt(level) == '-') {
-                index = 27;
-            }
-            else index = key.charAt(level) - 'a';
+            index = convertIndex(key.charAt(level));
             if (index < 0 || index > 27) return null;
             if (p.children[index] == null) {
                 return null;

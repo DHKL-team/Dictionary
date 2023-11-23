@@ -77,14 +77,14 @@ public class AddController implements Initializable {
             
             public void handle(KeyEvent keyEvent) {
                String tagert = add_EN.getText();
-               findwordExist(tagert);
+               findWordExist(tagert);
             }
 
 
         });
     }
     
-    public void findwordExist(String target){
+    public void findWordExist(String target){
         list.clear();
 
         listWord = dictionaryCommandLine.dictionarySearch(Dictionary.getInstance().getRoot(), target);

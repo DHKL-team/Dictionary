@@ -74,14 +74,14 @@ public class DictionaryCommandLine {
         int index;
         for (int i = 0; i < target.length(); i++) {
             if (target.charAt(i) == ' ') {
-                index = 26;
+                index = 0;
             } else if (target.charAt(i) == '-') {
-                index = 27;
+                index = 1;
             }
-            else index = target.charAt(i) - 'a';
-            if (root !=null){
-            root = root.children[index];}
-
+            else index = target.charAt(i) - 'a' + 2;
+            if (root != null){
+            root = root.children[index];
+            }
         }
         if (root!=null && root.isEndOfWord) {
             list.add(root.word);
