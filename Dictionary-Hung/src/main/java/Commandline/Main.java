@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        databaseService.connect();
+
         Parent root_load = FXMLLoader.load(getClass().getResource("LoadGui.fxml"));
         Scene scene_load = new Scene(root_load,788,550);
         stage.setScene(scene_load);

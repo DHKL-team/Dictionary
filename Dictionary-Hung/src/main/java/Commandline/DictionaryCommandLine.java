@@ -159,10 +159,7 @@ public class DictionaryCommandLine {
                     break;
                 case 5:
                     target = scan.next();
-                    DatabaseController db = new DatabaseController();
-                    db.connect();
-
-                    System.out.println(db.search(target));
+                    System.out.println(dictionaryLookup(target));
                     break;
                 case 6:
                     target = scan.next();
