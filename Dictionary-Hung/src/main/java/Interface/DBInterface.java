@@ -5,6 +5,6 @@ public interface DBInterface {
     String db_pass = "Hung123@moc";
     String db_user = "root";
 
-    public abstract void connect();
+    public abstract void connectdataBase();
     public abstract String search(String word);
 }

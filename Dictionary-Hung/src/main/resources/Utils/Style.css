@@ -100,14 +100,12 @@ list-cell:filled:hover,
     -fx-text-fill: white;
 }
 
-.explantion_area{
--fx-background-color: transparent;
+.explantionArea{
     -fx-background-radius: 5;
     -fx-border-radius: 5;
-    -fx-border-width: 0;
     -fx-text-fill: #015C92;
-    -fx-font-size: 16px;
-
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
 }
 
 .favorButton {
@@ -151,4 +149,13 @@ list-cell:filled:hover,
 .mywordPane{
      -fx-background-color :  #EEEEEE
 
+}
+
+.tagertArea{
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #015C92;
+    -fx-font-size: 20;
+    -fx-font-weight: 700;
+    -fx-text-Style : Bold;
 }

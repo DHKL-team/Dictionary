@@ -1,5 +1,6 @@
 package Commandline;
 
+import Database.DatabaseController;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +15,11 @@ public class Main extends Application {
     private double x = 0;
     private double y = 0;
 
+    public static final DatabaseController databaseService = new DatabaseController();
+
     @Override
     public void start(Stage stage) throws IOException {
+        databaseService.connect();
         Parent root_load = FXMLLoader.load(getClass().getResource("LoadGui.fxml"));
         Scene scene_load = new Scene(root_load,788,550);
         stage.setScene(scene_load);

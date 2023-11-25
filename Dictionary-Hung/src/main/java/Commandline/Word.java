@@ -5,6 +5,7 @@ public class Word {
     private String word_pronunciation;
     private String word_explain;
 
+    private  boolean favourite;
     public Word(String target, String explain) {
         this.word_target = target;
         this.word_explain = explain;

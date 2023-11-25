@@ -3,19 +3,15 @@ package Control;
 import Commandline.Dictionary;
 import Commandline.DictionaryManagement;
 import Commandline.Word;
+import Database.DatabaseController;
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.event.WeakEventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,21 +22,20 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Commandline.DictionaryCommandLine;
-import javafx.scene.web.WebView;
 
-public class SearchController implements Initializable {
+public class SearchController extends DatabaseController implements Initializable {
 
     DictionaryCommandLine dictionaryCommandLine = DictionaryCommandLine.getInstance();
 
     DictionaryManagement dictionaryManagement = DictionaryManagement.getInstance();
-    @FXML
-    private JFXButton deleteButton;
 
-   /* @FXML
-    private WebView view = new WebView();*/
 
     @FXML
     private  JFXButton saveButton;
+
+    @FXML
+    private  JFXButton favorButton;
+
 
     @FXML
     private TextArea LabelKetQua;
@@ -57,7 +52,16 @@ public class SearchController implements Initializable {
     @FXML
     private ImageView smallSearch;
 
+    @FXML
+    private  Label tagertResult;
+
+    @FXML
+    private Label pronunLabel;
+
     private   String target="";
+    private   String explain="";
+
+    private String pronunciation="";
     private  Alerts alerts = new Alerts();
     private int indexOfSelectedWord;
     ObservableList<Word> listWord = FXCollections.observableArrayList();
@@ -90,7 +94,7 @@ public class SearchController implements Initializable {
         });
         LabelKetQua.setEditable(false);
         saveButton.setVisible(false);
-
+        connectdataBase();
     }
 
     public void search() throws FileNotFoundException {
@@ -102,10 +106,17 @@ public class SearchController implements Initializable {
             list.add(w.getWord_target());
         }
         similarLabel.setItems(list);
-        String str = dictionaryManagement.dictionaryLookup(target);
-        LabelKetQua.setText(str);
+        explain =  dictionaryManagement.dictionaryLookup(target);
+        int tmp = explain.lastIndexOf('/');
+        pronunciation = explain.substring(0, tmp + 1);
+        pronunciation = pronunciation.trim();
+        explain = explain.substring(tmp + 1);
+        explain = explain.trim() + "\n\n";
+        tagertResult.setText(target.toUpperCase() +"\n" );
+        pronunLabel.setText(pronunciation);
+        LabelKetQua.setText(explain);
 
-        System.out.println(str);
+        System.out.println(explain);
     }
 
 
@@ -119,8 +130,15 @@ public class SearchController implements Initializable {
 
         if (selectWord !=null){
             target = selectWord;
-            String str = dictionaryCommandLine.dictionaryLookup(selectWord);
-            LabelKetQua.setText(str);
+            explain = dictionaryCommandLine.dictionaryLookup(selectWord);
+            int tmp = explain.lastIndexOf('/');
+            pronunciation = explain.substring(0, tmp + 1);
+            pronunciation = pronunciation.trim();
+            explain = explain.substring(tmp + 1);
+            explain = explain.trim() + "\n\n";
+            tagertResult.setText(target.toUpperCase()+"\n");
+            pronunLabel.setText(pronunciation);
+            LabelKetQua.setText(explain);
         }
     }
 
@@ -132,8 +150,7 @@ public class SearchController implements Initializable {
     }
     @FXML
     private void clickSaveButton(){
-        String explain = LabelKetQua.getText().trim();
-        String pronunciation = "";
+        explain = LabelKetQua.getText().trim();
         int tmp = explain.lastIndexOf('/');
         pronunciation = explain.substring(0, tmp + 1);
         pronunciation = pronunciation.trim();
@@ -170,4 +187,10 @@ public class SearchController implements Initializable {
             }
        similarLabel.setItems(list);
     }
+
+    @FXML
+   private void clickfavorButton(){
+        addwordtodataBase(target,explain);
+    }
+
 }

@@ -5,11 +5,10 @@ import Commandline.Dictionary;
 import Commandline.DictionaryCommandLine;
 import Commandline.DictionaryManagement;
 import Commandline.Word;
+import Database.DatabaseController;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +23,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class AddController implements Initializable {
+public class AddController extends DatabaseController implements Initializable {
 
     @FXML
     private TextField add_EN;
@@ -93,7 +92,7 @@ public class AddController implements Initializable {
         }
         suggestList.setItems(list);
         suggestList.setVisible(true);
-        
+
     }
 
 

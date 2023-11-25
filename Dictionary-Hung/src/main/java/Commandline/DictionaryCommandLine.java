@@ -1,7 +1,7 @@
 package Commandline;
 
 
-import Database.DatabaseService;
+import Database.DatabaseController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -159,7 +159,7 @@ public class DictionaryCommandLine {
                     break;
                 case 5:
                     target = scan.next();
-                    DatabaseService db = new DatabaseService();
+                    DatabaseController db = new DatabaseController();
                     db.connect();
 
                     System.out.println(db.search(target));

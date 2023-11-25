@@ -1,7 +1,7 @@
 package Control;
 
 import Commandline.DictionaryCommandLine;
-import javafx.event.ActionEvent;
+import Database.DatabaseController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DictionaryController implements Initializable {
+public class DictionaryController extends DatabaseController implements Initializable {
 
     @FXML
     private ImageView ExitIcon;
