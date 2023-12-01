@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -21,6 +22,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -33,25 +36,37 @@ public class StudyController extends DatabaseController implements Initializable
     @FXML
     private StackPane stackPane;
 
+    @FXML
+    private Label questionLabel;
     private ObservableList<String> list;
-
+    private ObservableList<String> listDef;
     private int CURRENTROW = 1;
     private int CURRENT_COLUMN = 1;
 
-    private int MAX_COLUMN ;
+    private int MAX_COLUMN;
     private String chooseWord;
+
+    private String chooseWordDef;
+    private int selectWordtoStudy;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         connectdataBase();
         list = mywordList();
-        MAX_COLUMN = list.get(2).length();
-        gridPane = createGrid(list.get(2).length());
+        listDef = mydefList();
+        selectWordtoStudy = 0;
+        chooseWord = list.get(selectWordtoStudy);
+        chooseWordDef = listDef.get(selectWordtoStudy);
+        questionLabel.setText(chooseWordDef);
+        MAX_COLUMN = chooseWord.length();
+        gridPane = createGrid(MAX_COLUMN);
         gridPane.setFocusTraversable(true);
         gridPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-              onKeyPress(gridPane,keyEvent);
+                System.out.println(1);
+                onKeyPress(gridPane, keyEvent);
             }
         });
         stackPane.getChildren().add(gridPane);
@@ -67,13 +82,11 @@ public class StudyController extends DatabaseController implements Initializable
         });
     }
 
-    public  GridPane createGrid(int row) {
+    public GridPane createGrid(int col) {
         GridPane table = new GridPane();
         StringBuilder resultStringBuilder = new StringBuilder();
-        for (int i = 1; i <= row; i++) {
+        for (int i = 1; i <= col; i++) {
             Label label = new Label();
-            label.setPrefHeight(50);
-            label.setPrefWidth(50);
             label.setAlignment(Pos.CENTER);
             label.getStyleClass().add("default-tile");
             table.add(label, i, 1);
@@ -83,7 +96,7 @@ public class StudyController extends DatabaseController implements Initializable
         return table;
     }
 
-    private  Label getLabel(GridPane gridPane, int searchRow , int searchCol){
+    private Label getLabel(GridPane gridPane, int searchRow, int searchCol) {
         for (Node child : gridPane.getChildren()) {
             Integer r = GridPane.getRowIndex(child);
             Integer c = GridPane.getColumnIndex(child);
@@ -94,84 +107,127 @@ public class StudyController extends DatabaseController implements Initializable
         }
         return null;
     }
-    private String getLabelText(GridPane gridPane, int searchRow, int searchCol){
-        Label label = getLabel(gridPane,searchRow,searchCol);
 
-        if (label !=null){
+    private String getLabelText(GridPane gridPane, int searchRow, int searchCol) {
+        Label label = getLabel(gridPane, searchRow, searchCol);
+
+        if (label != null) {
             return label.getText().toLowerCase();
         }
         return null;
     }
-    public void onKeyPress(GridPane gridPane, KeyEvent keyEvent){
-        if (keyEvent.getCode() == KeyCode.ENTER){
-               onEntterPressed(gridPane);
+
+    public void onKeyPress(GridPane gridPane, KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            onEntterPressed(gridPane);
         }
-        if (keyEvent.getCode().isLetterKey()){
-            onLetterPressed(gridPane,keyEvent);
-        }else if (keyEvent.getCode() == KeyCode.BACK_SPACE){
+        if (keyEvent.getCode().isLetterKey()) {
+            onLetterPressed(gridPane, keyEvent);
+        } else if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
             onBackSpacePredded(gridPane);
         }
     }
-    private void onLetterPressed(GridPane gridPane, KeyEvent keyEvent){
-        if (Objects.equals(getLabelText(gridPane, CURRENTROW,CURRENT_COLUMN) ,"")){
-            setTextFieldText(gridPane, CURRENTROW,CURRENT_COLUMN,keyEvent.getText());
-            Label label = getLabel(gridPane, CURRENTROW,CURRENT_COLUMN);
 
+    private void onLetterPressed(GridPane gridPane, KeyEvent keyEvent) {
+        if (Objects.equals(getLabelText(gridPane, CURRENTROW, CURRENT_COLUMN), "")) {
+            setTextFieldText(gridPane, CURRENTROW, CURRENT_COLUMN, keyEvent.getText());
+            Label label = getLabel(gridPane, CURRENTROW, CURRENT_COLUMN);
             ScaleTransition firstScaleTransition = new ScaleTransition(Duration.millis(100), label);
             firstScaleTransition.fromXProperty().setValue(1);
             firstScaleTransition.toXProperty().setValue(1.1);
             firstScaleTransition.fromYProperty().setValue(1);
             firstScaleTransition.toYProperty().setValue(1.1);
-            ScaleTransition secondScaleTransition = new ScaleTransition(Duration.millis(100),label);
+            ScaleTransition secondScaleTransition = new ScaleTransition(Duration.millis(100), label);
             secondScaleTransition.fromXProperty().setValue(1.1);
             secondScaleTransition.toXProperty().setValue(1);
             secondScaleTransition.fromYProperty().setValue(1.1);
             secondScaleTransition.toYProperty().setValue(1);
             new SequentialTransition(firstScaleTransition, secondScaleTransition).play();
-
             if (CURRENT_COLUMN < MAX_COLUMN) {
                 CURRENT_COLUMN++;
             }
         }
     }
 
-    private void onBackSpacePredded(GridPane gridPane){
-        if ( (CURRENT_COLUMN == MAX_COLUMN||CURRENT_COLUMN == 1) && !Objects.equals(getLabelText(gridPane,CURRENTROW,CURRENT_COLUMN),"" )){
-            setTextFieldText(gridPane,CURRENTROW,CURRENT_COLUMN,"");
+    private void onBackSpacePredded(GridPane gridPane) {
+        if ((CURRENT_COLUMN == MAX_COLUMN || CURRENT_COLUMN == 1) && !Objects.equals(getLabelText(gridPane, CURRENTROW, CURRENT_COLUMN), "")) {
+            setTextFieldText(gridPane, CURRENTROW, CURRENT_COLUMN, "");
 
-        }else if ((CURRENT_COLUMN == MAX_COLUMN && Objects.equals(getLabelText(gridPane,CURRENTROW,CURRENT_COLUMN),""))
-                   ||  (CURRENT_COLUMN> 1 && CURRENT_COLUMN < MAX_COLUMN)){
-                CURRENT_COLUMN --;
-               setTextFieldText(gridPane,CURRENTROW, CURRENT_COLUMN, "");
+        } else if ((CURRENT_COLUMN == MAX_COLUMN && Objects.equals(getLabelText(gridPane, CURRENTROW, CURRENT_COLUMN), ""))
+                || (CURRENT_COLUMN > 1 && CURRENT_COLUMN < MAX_COLUMN)) {
+            CURRENT_COLUMN--;
+            setTextFieldText(gridPane, CURRENTROW, CURRENT_COLUMN, "");
         }
     }
 
-    private  void onEntterPressed(GridPane gridPane){
+    private void onEntterPressed(GridPane gridPane) {
         String word = readWordfromGridPane(gridPane).toLowerCase();
-        if (word.length() != MAX_COLUMN){
+        if (word.length() != MAX_COLUMN) {
             return;
-        }else{
-            if (word.equals(list.get(2))){
-                System.out.println(word);
-                System.out.println("Ban da thang");
+        } else {
+            if (word.equals(chooseWord)) {
+                updateWordwasStudied(chooseWord);
+                selectWordtoStudy++;
+                if (selectWordtoStudy == list.size()) {
+                    return;
+                }
+                chooseWord = list.get(selectWordtoStudy);
+                chooseWordDef = listDef.get(selectWordtoStudy);
+                questionLabel.setText(chooseWordDef);
+                resetWordCol();
             }
         }
 
     }
 
-    private String readWordfromGridPane(GridPane gridPane){
+    private String readWordfromGridPane(GridPane gridPane) {
         StringBuilder word = new StringBuilder();
-        for (int i = 1 ; i <= MAX_COLUMN ;i++){
-            word.append(getLabelText(gridPane,CURRENTROW,i));
+        for (int i = 1; i <= MAX_COLUMN; i++) {
+            word.append(getLabelText(gridPane, CURRENTROW, i));
         }
         return word.toString();
     }
-    private void setTextFieldText(GridPane gridPane, int currentRow,int currentCol, String text) {
-         Label label = getLabel(gridPane,currentRow,currentCol);
-        if (label != null){
+
+    private void setTextFieldText(GridPane gridPane, int currentRow, int currentCol, String text) {
+        Label label = getLabel(gridPane, currentRow, currentCol);
+        if (label != null) {
             label.setText(text.toUpperCase());
         }
     }
+
+    private void resetWordCol() {
+        MAX_COLUMN = chooseWord.length();
+        gridPane = createGrid(MAX_COLUMN);
+        stackPane.getChildren().remove(0);
+        gridPane.setFocusTraversable(true);
+        gridPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                System.out.println(3);
+                onKeyPress(gridPane, keyEvent);
+            }
+        });
+        stackPane.getChildren().add(gridPane);
+        CURRENT_COLUMN = 1;
+    }
+
+    private void updateWordwasStudied(String s) {
+
+        String sql = "UPDATE myword SET status = 1 WHERE english = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, s);
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Word '" + s + "' status updated successfully.");
+            } else {
+                System.out.println("Word '" + s + "' not found in the database.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
 
 

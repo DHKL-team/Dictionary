@@ -171,8 +171,8 @@ list-cell:filled:hover,
 }
 
 .default-tile {
-    -fx-background-color:#CCCCCC;
-    -fx-border-color: #000000;
+    -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
+    -fx-border-color: linear-gradient(to right,#15267D,#5E419A,#9E5EAF);
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-text-fill: #000000;
@@ -185,4 +185,34 @@ list-cell:filled:hover,
     -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+}
+
+.questionLabel {
+   -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
+   -fx-border-color : linear-gradient(to right,#15267D,#5E419A,#9E5EAF);
+   -fx-border-radius: 5px;
+   -fx-background-radius: 5px;
+   -fx-text-alignment : center;
+   -fx-font-weight :bold;
+   -fx-font-size: 18px;
+   -fx-text-fill:#000000;
+
+}
+
+.paneGgtrans {
+     -fx-background-color: linear-gradient(to bottom right,#15267D,#71A9F7);
+}
+
+.transButton{
+     -fx-background-color:#71A9F7;
+     -fx-border-radius: 5px;
+     -fx-background-radius: 5px;
+     -fx-text-fill : #FFFFFF;
+     -fx-text-Style: Bold;
+}
+
+.GgtransTextArea{
+  -fx-border-radius: 10px;
+  -fx-background-radius: 10px;
+  -fx-effect: dropshadow(three-pass-box, #000000, 4, 0, 3, 1) ;
 }

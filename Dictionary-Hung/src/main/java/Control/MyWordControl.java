@@ -13,22 +13,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class MyWordControl extends  DatabaseController implements Initializable {
     @FXML
     private ListView<String> mywordList;
-
+    @FXML
+    private ProgressBar percentwordStudy;
     @FXML
     private JFXButton studyButton;
 
@@ -58,6 +61,8 @@ public class MyWordControl extends  DatabaseController implements Initializable 
         listdef = mydefList();
         mywordList.setItems(list);
         countWord();
+
+        percentwordStudy.setProgress((double)numberOfWordwasStuddied()/list.size());
         card.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -97,8 +102,12 @@ public class MyWordControl extends  DatabaseController implements Initializable 
                 removeWordfromdataBase(selectWord);
                 refreshWordList();
                 card.setVisible(false);
+                closeButton.setVisible(false);
+                removeWordButton.setVisible(false);
             }
         });
+
+
     }
 
     private  void countWord(){
@@ -164,6 +173,24 @@ public class MyWordControl extends  DatabaseController implements Initializable 
                 break;
             }
         mywordList.setItems(list);
+    }
+
+    private int numberOfWordwasStuddied(){
+        try {
+            String sql = "SELECT COUNT(*) FROM myWord WHERE status = 1";
+            try (Statement statement = connection.createStatement();
+                 ResultSet resultSet = statement.executeQuery(sql)) {
+                if (resultSet.next()) {
+
+                    return resultSet.getInt(1);
+                } else {
+                    return 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 

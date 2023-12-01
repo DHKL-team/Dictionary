@@ -12,12 +12,15 @@ import com.sun.speech.freetts.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 
 public class GoogleTranslator implements Initializable {
     private String input;
@@ -61,7 +64,8 @@ public class GoogleTranslator implements Initializable {
 
     @FXML
     private ChoiceBox<String> targetLan;
-
+    @FXML
+    private ImageView ExchangeButton;
     @FXML
     public void Translate(ActionEvent event) throws IOException {
 
@@ -89,14 +93,9 @@ public class GoogleTranslator implements Initializable {
         Voice[] voicelist = VoiceManager.getInstance().getVoices();
         if (voice != null) {
             voice.allocate();
-            /*
-             * voice.setRate(130); //voice.setVolume((float) 0.9); voice.setPitch(120);
-             */
-            /*
-             * System.out.println("Voice Rate: "+ voice.getRate());
-             * System.out.println("Voice Pitch: "+ voice.getPitch());
-             * System.out.println("Voice Volume: "+ voice.getVolume());
-             */
+
+             // voice.setRate(130); //voice.setVolume((float) 0.9); voice.setPitch(120);
+
             voice.speak(input);
 
             voice.deallocate();
@@ -147,6 +146,22 @@ public class GoogleTranslator implements Initializable {
         targetLan.setItems(choice2);
         targetLan.setValue("Vietnamese");
         targetLan.setOnAction(e -> settarget(targetLan.getValue()));
+
+        ExchangeButton.setOnMouseClicked(e -> exchangeLanguage());
+
+
+    }
+
+    private void exchangeLanguage(){
+        String temp = sourceLan.getValue();
+        sourceLan.setValue(targetLan.getValue());
+        targetLan.setValue(temp);
+        setsource(sourceLan.getValue());
+        settarget(targetLan.getValue());
+
+        String tmp1 = outtxt.getText();
+        outtxt.setText(intxt.getText());
+        intxt.setText(tmp1);
     }
 
 }
