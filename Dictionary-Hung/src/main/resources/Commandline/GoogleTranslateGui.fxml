@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.GoogleTranslator">
+   <children>
+      <TextArea fx:id="intxt" layoutX="73.0" layoutY="132.0" prefHeight="200.0" prefWidth="672.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="72.0" />
+      <TextArea fx:id="outtxt" layoutX="73.0" layoutY="388.0" prefHeight="200.0" prefWidth="672.0" />
+      <JFXButton fx:id="Translate" layoutX="366.0" layoutY="352.0" onAction="#Translate" prefHeight="26.0" prefWidth="110.0" text="Translate" />
+      <ChoiceBox fx:id="sourceLan" accessibleRole="CHECK_MENU_ITEM" layoutX="594.0" layoutY="106.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="targetLan" accessibleRole="CHECK_MENU_ITEM" layoutX="594.0" layoutY="365.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

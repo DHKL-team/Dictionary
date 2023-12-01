@@ -1,12 +1,15 @@
 package Control;
 
 import Commandline.DictionaryCommandLine;
+import Commandline.Main;
 import Database.DatabaseController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.input.MouseEvent;
@@ -14,13 +17,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DictionaryController extends DatabaseController implements Initializable {
+public class DictionaryController  implements Initializable {
 
+    private  Stage stage;
     @FXML
     private ImageView ExitIcon;
 
@@ -49,13 +52,6 @@ public class DictionaryController extends DatabaseController implements Initiali
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            dictionaryCommandLine.dictionaryBasic();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-
         searchButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -77,10 +73,17 @@ public class DictionaryController extends DatabaseController implements Initiali
             }
         });
 
+        googleTranslateButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                switchComponent("./src/main/resources/Commandline/GoogleTranslateGui.fxml");
+            }
+        });
         ExitIcon.setOnMouseClicked(event -> {
             dictionaryCommandLine.dictionaryExportToFile();
             System.exit(0);
         });
+
 
         miniIcon.setOnMouseClicked(event -> {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -96,7 +99,7 @@ public class DictionaryController extends DatabaseController implements Initiali
     }
 
     @FXML
-    private void switchComponent(String path) {
+    private  void switchComponent(String path) {
         try {
             URL url = new File(path).toURI().toURL();
             AnchorPane cmp = FXMLLoader.load(url);
@@ -106,5 +109,22 @@ public class DictionaryController extends DatabaseController implements Initiali
         }
     }
 
+    public void switchtoStudy() throws  IOException{
+        URL url = new File("./src/main/resources/Commandline/StudyGui.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root,1030,679);
+        Main.stageRefer.setScene(scene);
+        Main.moveScreen(root,Main.stageRefer);
+        Main.stageRefer.show();
+    }
+
+    public void switchtoDictionaryMain() throws  IOException {
+        URL url = new File("./src/main/resources/Commandline/DictionaryGui.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root,1030,679);
+        Main.stageRefer.setScene(scene);
+        Main.moveScreen(root,Main.stageRefer);
+        Main.stageRefer.show();
+    }
 
 }

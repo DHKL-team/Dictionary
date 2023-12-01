@@ -50,7 +50,7 @@
             </Label>
             <HBox layoutX="98.0" layoutY="39.0" prefHeight="40.0" prefWidth="204.0">
                <children>
-                  <JFXButton prefHeight="33.0" prefWidth="51.0" styleClass="loaButton">
+                  <JFXButton onAction="#TextToSpeech" prefHeight="33.0" prefWidth="51.0" styleClass="loaButton">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -73,7 +73,7 @@
                   </JFXButton>
                   <JFXButton fx:id="deleteButton" alignment="BOTTOM_RIGHT" ellipsisString="" onAction="#clickdeleteButton" prefHeight="31.0" prefWidth="46.0" styleClass="removeButton" />
                   <JFXButton fx:id="updateButton" onAction="#clickupdateButton" prefHeight="30.0" prefWidth="34.0" styleClass="updateButton" />
-                  <JFXButton fx:id="favorButton" prefHeight="34.0" prefWidth="35.0" styleClass="favorButton" text="Button" onAction="#clickfavorButton"  />
+                  <JFXButton fx:id="favorButton" onAction="#clickfavorButton" prefHeight="34.0" prefWidth="35.0" styleClass="favorButton" text="Button" />
                </children>
             </HBox>
             <TextArea fx:id="LabelKetQua" layoutY="140.0" prefHeight="379.0" prefWidth="402.0" styleClass="explantionArea" wrapText="true" />

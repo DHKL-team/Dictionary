@@ -62,6 +62,23 @@ public class DatabaseController implements DBInterface {
         return list;
     }
 
+    public ObservableList<String> mydefList() {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        String sql = "SELECT * from myword";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            String word = null;
+            while (resultSet.next()) {
+                word = resultSet.getString("definition");
+                list.add(word);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
     public void addwordtodataBase(String english, String definition) {
         String sql = "INSERT INTO myWord (english, definition) VALUES (?, ?)";
 
@@ -79,6 +96,26 @@ public class DatabaseController implements DBInterface {
             throw new RuntimeException(e);
         }
     }
+
+    public void removeWordfromdataBase(String english) {
+        String sql = "DELETE FROM myword WHERE english = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, english);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("Word removed successfully!");
+            } else {
+                System.out.println("Word not found or failed to remove.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
 
 }

@@ -7,6 +7,9 @@ module Commandline {
     requires javafx.web;
     requires javafx.media;
     requires java.sql;
+    requires java.speech.api;
+    requires freetts;
+
 
     opens Commandline to javafx.fxml;
     exports Commandline;

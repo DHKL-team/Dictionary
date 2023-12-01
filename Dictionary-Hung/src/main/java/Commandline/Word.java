@@ -7,12 +7,14 @@ public class Word {
 
     private  boolean favourite;
     public Word(String target, String explain) {
+        target = target.toLowerCase().trim();
         this.word_target = target;
         this.word_explain = explain;
         this.word_pronunciation = "";
     }
 
     public Word(String target, String pronunciation, String explain) {
+        target = target.toLowerCase().trim();
         this.word_target = target;
         this.word_pronunciation = pronunciation;
         this.word_explain = explain;
