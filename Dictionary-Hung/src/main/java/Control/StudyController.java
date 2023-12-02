@@ -1,8 +1,7 @@
 package Control;
 
 import Database.DatabaseController;
-import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
+import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,8 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -22,6 +21,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -48,13 +48,19 @@ public class StudyController extends DatabaseController implements Initializable
 
     private String chooseWordDef;
     private int selectWordtoStudy;
+    @FXML
+    private ImageView correctLabel;
 
+    @FXML
+    private ImageView wrongLabel;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         connectdataBase();
         list = mywordList();
         listDef = mydefList();
+        correctLabel.setVisible(false);
+        wrongLabel.setVisible(false);
         selectWordtoStudy = 0;
         chooseWord = list.get(selectWordtoStudy);
         chooseWordDef = listDef.get(selectWordtoStudy);
@@ -166,15 +172,25 @@ public class StudyController extends DatabaseController implements Initializable
             return;
         } else {
             if (word.equals(chooseWord)) {
-                updateWordwasStudied(chooseWord);
-                selectWordtoStudy++;
-                if (selectWordtoStudy == list.size()) {
-                    return;
-                }
-                chooseWord = list.get(selectWordtoStudy);
-                chooseWordDef = listDef.get(selectWordtoStudy);
-                questionLabel.setText(chooseWordDef);
-                resetWordCol();
+                correctLabel.setVisible(true);
+                wrongLabel.setVisible(false);
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+                pauseTransition.setOnFinished(event -> {
+                    updateWordwasStudied(chooseWord);
+
+                    selectWordtoStudy++;
+                    if (selectWordtoStudy == list.size()) {
+                        return;
+                    }
+                    chooseWord = list.get(selectWordtoStudy);
+                    chooseWordDef = listDef.get(selectWordtoStudy);
+                    questionLabel.setText(chooseWordDef);
+                    resetWordCol();
+                    correctLabel.setVisible(false);
+                });
+                pauseTransition.play();
+            }else{
+               wrongLabel.setVisible(true);
             }
         }
 
@@ -196,6 +212,7 @@ public class StudyController extends DatabaseController implements Initializable
     }
 
     private void resetWordCol() {
+        //checkAns.setVisible(false);
         MAX_COLUMN = chooseWord.length();
         gridPane = createGrid(MAX_COLUMN);
         stackPane.getChildren().remove(0);
@@ -226,6 +243,8 @@ public class StudyController extends DatabaseController implements Initializable
             throw new RuntimeException(e);
         }
     }
+
+
 
 
 }

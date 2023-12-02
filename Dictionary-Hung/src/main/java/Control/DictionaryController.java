@@ -65,7 +65,12 @@ public class DictionaryController  implements Initializable {
                 switchComponent("./src/main/resources/Commandline/AddGui.fxml");
             }
         });
-
+        gameButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                switchComponent("./src/main/resources/Commandline/GuessWordGame.fxml");
+            }
+        });
         myWordButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

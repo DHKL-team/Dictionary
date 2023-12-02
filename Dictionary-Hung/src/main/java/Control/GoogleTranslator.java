@@ -21,6 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 public class GoogleTranslator implements Initializable {
     private String input;
@@ -54,6 +55,8 @@ public class GoogleTranslator implements Initializable {
         else target = "zh-CN";
     }
     @FXML
+    private ImageView loudspeak;
+    @FXML
     private TextArea intxt;
 
     @FXML
@@ -84,6 +87,7 @@ public class GoogleTranslator implements Initializable {
 
     // Chuyen van ban thanh giong noi
     @FXML
+
     public void TextToSpeech(ActionEvent event) {
         final String VOICE_KEY = "freetts.voices";
         final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
@@ -146,6 +150,7 @@ public class GoogleTranslator implements Initializable {
         targetLan.setItems(choice2);
         targetLan.setValue("Vietnamese");
         targetLan.setOnAction(e -> settarget(targetLan.getValue()));
+
 
         ExchangeButton.setOnMouseClicked(e -> exchangeLanguage());
 

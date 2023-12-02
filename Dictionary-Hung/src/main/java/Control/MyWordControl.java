@@ -56,6 +56,7 @@ public class MyWordControl extends  DatabaseController implements Initializable 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         connectdataBase();
         closeButton.setVisible(false);
+        card.setVisible(false);
         removeWordButton.setVisible(false);
         list = mywordList();
         listdef = mydefList();
@@ -75,7 +76,7 @@ public class MyWordControl extends  DatabaseController implements Initializable 
                 isFrontShowing = !isFrontShowing;
             }
         });
-        card.setVisible(false);
+
 
         closeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -112,7 +113,7 @@ public class MyWordControl extends  DatabaseController implements Initializable 
 
     private  void countWord(){
         int length = list.size();
-        numberofWord.setText(length + " word");
+        numberofWord.setText( numberOfWordwasStuddied()+"/" + length + " word");
     }
     @FXML
     private void handleMouseClickAWord(){

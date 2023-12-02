@@ -39,5 +39,6 @@
          <font>
             <Font size="14.0" />
          </font></TextArea>
+      <JFXButton layoutX="137.0" layoutY="488.0" onAction="#TextToSpeech" />
    </children>
 </AnchorPane>
