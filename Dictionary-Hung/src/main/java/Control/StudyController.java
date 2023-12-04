@@ -174,7 +174,7 @@ public class StudyController extends DatabaseController implements Initializable
             if (word.equals(chooseWord)) {
                 correctLabel.setVisible(true);
                 wrongLabel.setVisible(false);
-                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(4.5));
                 pauseTransition.setOnFinished(event -> {
                     updateWordwasStudied(chooseWord);
 

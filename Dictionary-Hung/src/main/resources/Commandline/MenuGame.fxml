@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.MenuGameController">
+   <children>
+      <AnchorPane fx:id="paneSwitch" prefHeight="679.0" prefWidth="1030.0">
+         <children>
+            <ImageView fitHeight="886.0" fitWidth="1039.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/image/menuBg.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="228.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="GuessWord" layoutX="837.0" layoutY="316.0" onAction="#GuessWordFunc" prefHeight="46.0" prefWidth="154.0" styleClass="gameMenuButton" text="GUESSWORD">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="Hangman" layoutX="838.0" layoutY="438.0" onAction="#HangmanFunc" prefHeight="46.0" prefWidth="154.0" styleClass="gameMenuButton" text="HANGMAN">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></JFXButton>
+            <ImageView fx:id="backtomenu" fitHeight="68.0" fitWidth="61.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/image/arrow-left.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="exit" fitHeight="61.0" fitWidth="67.0" layoutX="966.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/image/emergency-exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="171.0" fitWidth="574.0" layoutX="254.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/image/gameCenterlabel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

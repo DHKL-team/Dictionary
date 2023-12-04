@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DictionaryController  implements Initializable {
+public class DictionaryController extends DatabaseController  implements Initializable {
 
     private  Stage stage;
     @FXML
@@ -31,8 +31,6 @@ public class DictionaryController  implements Initializable {
     private JFXButton searchButton;
     @FXML
     private JFXButton addWordButton;
-
-
 
     @FXML
     private JFXButton gameButton;
@@ -52,6 +50,7 @@ public class DictionaryController  implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        connectdataBase();
         searchButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -65,12 +64,7 @@ public class DictionaryController  implements Initializable {
                 switchComponent("./src/main/resources/Commandline/AddGui.fxml");
             }
         });
-        gameButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                switchComponent("./src/main/resources/Commandline/GuessWordGame.fxml");
-            }
-        });
+
         myWordButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -82,6 +76,18 @@ public class DictionaryController  implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 switchComponent("./src/main/resources/Commandline/GoogleTranslateGui.fxml");
+            }
+        });
+
+        gameButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    switchtoGameMenu();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
         ExitIcon.setOnMouseClicked(event -> {
@@ -104,7 +110,7 @@ public class DictionaryController  implements Initializable {
     }
 
     @FXML
-    private  void switchComponent(String path) {
+    protected void switchComponent(String path) {
         try {
             URL url = new File(path).toURI().toURL();
             AnchorPane cmp = FXMLLoader.load(url);
@@ -132,4 +138,30 @@ public class DictionaryController  implements Initializable {
         Main.stageRefer.show();
     }
 
+    public void switchtoGameMenu() throws  IOException {
+        URL url = new File("./src/main/resources/Commandline/MenuGame.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root,1030,679);
+        Main.stageRefer.setScene(scene);
+        Main.moveScreen(root,Main.stageRefer);
+        Main.stageRefer.show();
+    }
+
+    public void switchtoGuessGame() throws  IOException {
+        URL url = new File("./src/main/resources/Commandline/GuessWordGame.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root,1030,679);
+        Main.stageRefer.setScene(scene);
+        Main.moveScreen(root,Main.stageRefer);
+        Main.stageRefer.show();
+    }
+
+    public void switchtoHangmanGame() throws  IOException{
+        URL url = new File("./src/main/resources/Commandline/hangman.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        Scene scene = new Scene(root,900,645);
+        Main.stageRefer.setScene(scene);
+        Main.moveScreen(root,Main.stageRefer);
+        Main.stageRefer.show();
+    }
 }

@@ -29,7 +29,9 @@ public class DictionaryCommandLine {
     Dictionary dictionary = Dictionary.getInstance();
     List<Word> wordList = new ArrayList<>();
     boolean wordListChange = false;
-
+    public List<Word> getWordList() {
+        return wordList;
+    }
     private void dfs(List<Word> list, Trie.TrieNode root) {
        try {
            for (int i = 0; i < Trie.ALPHABET_SIZE; i++) {
@@ -63,6 +65,7 @@ public class DictionaryCommandLine {
         String file = "./src/main/resources/Utils/tudien.txt";
         dictionaryMng.insertFromFile(file);
         wordListChange = true;
+       /// dfs(wordList, dictionary.getRoot());
     }
 
     public String dictionaryLookup(String target) {

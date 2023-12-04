@@ -15,4 +15,6 @@ module Commandline {
     exports Commandline;
     exports Control;
     opens Control to javafx.fxml;
+    opens  Game to javafx.fxml;
+    exports Game;
 }

@@ -48,6 +48,7 @@
 }
 
 .addField{
+-fx-background-color :#7D5683;
 -fx-border-radius :15;
 -fx-background-radius:15
 }
@@ -66,6 +67,7 @@
 }
 
 .addPane{
+ -fx-background-color: #402158;
  -fx-background-radius: 20;
  -fx-border-radius:20;
 
@@ -203,14 +205,20 @@ list-cell:filled:hover,
      -fx-background-color: linear-gradient(to bottom right,#15267D,#71A9F7);
 }
 
-.transButton{
+.transButton .label{
      -fx-background-color:#71A9F7;
      -fx-border-radius: 5px;
      -fx-background-radius: 5px;
      -fx-text-fill : #FFFFFF;
      -fx-text-Style: Bold;
 }
-
+.transButton {
+     -fx-background-color:#71A9F7;
+     -fx-border-radius: 5px;
+     -fx-background-radius: 5px;
+     -fx-text-fill : #FFFFFF;
+     -fx-text-Style: Bold;
+}
 .GgtransTextArea{
   -fx-border-radius: 10px;
   -fx-background-radius: 10px;
@@ -225,12 +233,12 @@ list-cell:filled:hover,
     -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
     -fx-border-color: #000000;
     -fx-text-fill: #000000;
-    -fx-font-size: 20px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
-    -fx-min-width: 40px;
-    -fx-min-height: 40px;
-    -fx-pref-width: 80px;
-    -fx-pref-height: 80px;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+        -fx-pref-width: 65px;
+        -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
@@ -240,4 +248,56 @@ list-cell:filled:hover,
     -fx-border-width:2px;
     -fx-background-radius:5px;
     -fx-border-radius:5px;
+}
+
+.buttonWord {
+   -fx-background-color : linear-gradient(to bottom, #48038C,#6C1ED9,#AC41F2);
+   -fx-boder-coloer: #0B0340;
+   -fx-border-radius: 40px;
+   -fx-background-radius: 40px;
+   -fx-pref-height:50;
+   -fx-pref-weight:50;
+   -fx-text-fill:#FFFFFF;
+   -fx-text-Style: Bold;
+
+}
+
+.undoBut {
+   -fx-background-color : linear-gradient(to bottom, #48038C,#6C1ED9,#AC41F2);
+   -fx-border-color: TRANSPARENT;
+   -fx-text-fill:#FFFFFF;
+   -fx-text-Style:Bold;
+
+}
+
+.backButtonGuess{
+  -fx-background-color : linear-gradient(to right, #48038C,#6C1ED9,#AC41F2);
+  -fx-border-color:#000000;
+  -fx-text-fill:#FFFFFF;
+  -fx-text-Style: Bold
+
+}
+
+.levelchoiceBox .label{
+  -fx-background-color : linear-gradient(to right, #48038C,#6C1ED9,#AC41F2);
+  -fx-alignment: CENTER;
+  -fx-border-color:#000000;
+  -fx-text-fill:#FFFFFF;
+  -fx-text-Style: Bold
+
+}
+.gameMenuButton {
+   -fx-background-radius:5px;
+   -fx-border-radius: 5px;
+   -fx-border-weight: 3px;
+   -fx-border-color:#FFFFFF;
+   -fx-text-fill: #800080;
+   -fx-effect: dropshadow(three-pass-box, #FFFFFF, 4, 0, 3, 1) ;
+}
+
+.gameMenuButton: hover{
+    -fx-background-color: linear-gradient(to right,	#4B0082,#B388EB,#FF1493);
+    -fx-border-color: WHITE;
+    -fx-text-fill:#FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, #FFFFFF, 4, 0, 3, 1) ;
 }

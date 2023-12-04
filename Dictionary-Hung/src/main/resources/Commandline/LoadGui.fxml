@@ -13,5 +13,10 @@
          </image>
       </ImageView>
       <ProgressBar layoutX="289.0" layoutY="469.0" prefWidth="200.0" />
+      <ImageView fitHeight="167.0" fitWidth="467.0" layoutX="169.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Utils/image/loadLabelremovebgpreview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

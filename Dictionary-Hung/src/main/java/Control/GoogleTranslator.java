@@ -141,12 +141,12 @@ public class GoogleTranslator implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ObservableList<String> choice1 = FXCollections.observableArrayList("English", "Vietnamese", "Chinese", "Spanish", "Hindi", "Arabic", "Portuguese", "Russian", "Franch", "German");
+        ObservableList<String> choice1 = FXCollections.observableArrayList("English", "Vietnamese", "Chinese", "Spanish", "Hindi", "Arabic", "Portuguese", "Russian", "French", "German");
         sourceLan.setItems(choice1);
         sourceLan.setValue("English");
         sourceLan.setOnAction(e -> setsource(sourceLan.getValue()));
 
-        ObservableList<String> choice2 = FXCollections.observableArrayList("English", "Vietnamese", "Chinese", "Spanish", "Hindi", "Arabic", "Portuguese", "Russian", "Franch", "German");
+        ObservableList<String> choice2 = FXCollections.observableArrayList("English", "Vietnamese", "Chinese", "Spanish", "Hindi", "Arabic", "Portuguese", "Russian", "French", "German");
         targetLan.setItems(choice2);
         targetLan.setValue("Vietnamese");
         targetLan.setOnAction(e -> settarget(targetLan.getValue()));
