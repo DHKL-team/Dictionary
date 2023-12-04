@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="658.0" prefWidth="824.0" styleClass="addPane"
+            stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="Control.AddController">
+    <children>
+        <TextField fx:id="add_EN" alignment="TOP_LEFT" layoutX="50.0" layoutY="110.0" prefHeight="54.0"
+                   prefWidth="338.0" styleClass="addField" AnchorPane.bottomAnchor="481.6" AnchorPane.leftAnchor="50.0"
+                   AnchorPane.rightAnchor="431.0">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </TextField>
+        <JFXButton fx:id="confirmButton" layoutX="328.0" layoutY="561.0" prefHeight="40.0" prefWidth="222.0"
+                   styleClass="confirmButton" text="Xác nhận">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </JFXButton>
+        <Label layoutX="50.0" layoutY="80.0" prefHeight="30.0" prefWidth="118.0" styleClass="addLabel"
+               text="Từ tiếng anh">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="483.0" layoutY="80.0" prefHeight="30.0" prefWidth="118.0" styleClass="addLabel"
+               text="Định nghĩa">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="add_VN" alignment="TOP_LEFT" layoutX="483.0" layoutY="110.0" prefHeight="392.0"
+                   prefWidth="292.0" styleClass="addField" AnchorPane.rightAnchor="50.0">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </TextField>
+        <ListView fx:id="suggestList" layoutX="54.0" layoutY="165.0" prefHeight="232.0" prefWidth="330.0"
+                  styleClass="list-cell"/>
+    </children>
+</AnchorPane>

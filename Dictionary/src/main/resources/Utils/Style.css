@@ -1,0 +1,304 @@
+.menuItem: hover{
+        -fx-background-color: linear-gradient(to right,#8093F1,#B388EB,#F7AEF8);
+        -fx-border-color: WHITE;
+        -fx-border-width:0px 0px 0px 5px;
+}
+
+.searchandavatararea{
+         -fx-border-radius: 20;
+         -fx-background-radius: 20;
+}
+
+
+.searchField{
+         -fx-border-radius: 30;
+         -fx-background-radius: 30;
+
+}
+
+.ResultArea{
+         -fx-background-color: WHITE;
+         -fx-background-radius: 5;
+         -fx-border-radius: 5;
+         -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5) ;
+
+}
+.DanhSachTuLienQuan{
+      -fx-background-color: WHITE;
+      -fx-background-radius: 5;
+      -fx-border-radius: 5;
+      -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5) ;
+}
+
+.PanelSearch{
+         -fx-border-radius: 20;
+         -fx-background-radius: 20;
+
+}
+
+.defLabel{
+ -fx-background-color :#442F73;
+
+}
+
+.addLabel{
+-fx-background-color : #00B7FF;
+-fx-border-radius: 10;
+-fx-background-radius: 10;
+}
+
+.addField{
+-fx-background-color :#7D5683;
+-fx-border-radius :15;
+-fx-background-radius:15
+}
+
+.confirmButton {
+-fx-background-color : #00B7FF;
+-fx-border-radius: 10;
+-fx-background-radius: 10;
+}
+
+.confirmButton: hover{
+     -fx-background-color : #C6EA8D;
+     -fx-border-radius: 10;
+     -fx-background-radius: 10;
+
+}
+
+.addPane{
+ -fx-background-color: #402158;
+ -fx-background-radius: 20;
+ -fx-border-radius:20;
+
+}
+
+.list-cell{
+    -fx-text-fill: #015C92;
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
+    -fx-padding: 5;
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
+}
+
+.list-cell:even, .list-cell:odd{
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.list-cell:even{
+   -fx-background-color: #f5f6fa;
+}
+
+.list-cell:odd {
+    -fx-background-color: #eff0fb;
+}
+.
+list-cell:filled:hover,
+.list-cell:filled:selected{
+    -fx-background-color: linear-gradient(to right,#15267D,#5E419A,#9E5EAF);
+    -fx-text-fill: white;
+}
+
+.explantionArea{
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #015C92;
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
+}
+
+.favorButton {
+    -fx-graphic: url('../Utils/image/favourite_normal.png');
+}
+
+.favorButton:hover {
+    -fx-graphic: url('../Utils/image/favourite_super.png');
+
+}
+
+.removeButton {
+   -fx-graphic: url('../Utils/image/remove.png');
+}
+
+.updateButton {
+  -fx-graphic: url('../Utils/image/update.png');
+}
+
+.loaButton {
+-fx-graphic: url('../Utils/image/loa.png');
+}
+
+.saveButton {
+   -fx-graphic: url('../Utils/image/save.png');
+   -fx-font-size: 16px;
+   -fx-text-fill : white;
+   -fx-background-color :#442F73;
+}
+
+.studyButton {
+     -fx-background-color: linear-gradient(to right,#15267D,#5E419A,#9E5EAF);
+     -fx-font-weight: 700;
+}
+
+.mywordLabel {
+    -fx-background-color: linear-gradient(to bottom right,#15267D,#5E419A,#9E5EAF);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.mywordPane{
+     -fx-background-color :  #EEEEEE
+
+}
+
+.tagertArea{
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #015C92;
+    -fx-font-size: 23;
+    -fx-font-weight: 700;
+    -fx-text-Style : Bold;
+}
+
+.flashCard{
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
+     -fx-text-fill :BLACK;
+     -fx-background-color : white;
+     -fx-text-Style: Bold;
+     -fx-font-weight: 700;
+     -fx-border-color: #015C92;
+}
+
+.default-tile {
+    -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
+    -fx-border-color: linear-gradient(to right,#15267D,#5E419A,#9E5EAF);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #000000;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+    -fx-pref-width: 65px;
+    -fx-pref-height: 65px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.questionLabel {
+   -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
+   -fx-border-color : linear-gradient(to right,#15267D,#5E419A,#9E5EAF);
+   -fx-border-radius: 5px;
+   -fx-background-radius: 5px;
+   -fx-text-alignment : center;
+   -fx-font-weight :bold;
+   -fx-font-size: 18px;
+   -fx-text-fill:#000000;
+
+}
+
+.paneGgtrans {
+     -fx-background-color: linear-gradient(to bottom right,#15267D,#71A9F7);
+}
+
+.transButton .label{
+     -fx-background-color:#71A9F7;
+     -fx-border-radius: 5px;
+     -fx-background-radius: 5px;
+     -fx-text-fill : #FFFFFF;
+     -fx-text-Style: Bold;
+}
+.transButton {
+     -fx-background-color:#71A9F7;
+     -fx-border-radius: 5px;
+     -fx-background-radius: 5px;
+     -fx-text-fill : #FFFFFF;
+     -fx-text-Style: Bold;
+}
+.GgtransTextArea{
+  -fx-border-radius: 10px;
+  -fx-background-radius: 10px;
+  -fx-effect: dropshadow(three-pass-box, #000000, 4, 0, 3, 1) ;
+}
+
+.studyPane {
+   -fx-background-color:#FFFFFF;
+}
+
+.guessGameGridPane {
+    -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
+    -fx-border-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+        -fx-pref-width: 65px;
+        -fx-pref-height: 65px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.guessGameGrid {
+    -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
+    -fx-border-width:2px;
+    -fx-background-radius:5px;
+    -fx-border-radius:5px;
+}
+
+.buttonWord {
+   -fx-background-color : linear-gradient(to bottom, #48038C,#6C1ED9,#AC41F2);
+   -fx-boder-coloer: #0B0340;
+   -fx-border-radius: 40px;
+   -fx-background-radius: 40px;
+   -fx-pref-height:50;
+   -fx-pref-weight:50;
+   -fx-text-fill:#FFFFFF;
+   -fx-text-Style: Bold;
+
+}
+
+.undoBut {
+   -fx-background-color : linear-gradient(to bottom, #48038C,#6C1ED9,#AC41F2);
+   -fx-border-color: TRANSPARENT;
+   -fx-text-fill:#FFFFFF;
+   -fx-text-Style:Bold;
+
+}
+
+.backButtonGuess{
+  -fx-background-color : linear-gradient(to right, #48038C,#6C1ED9,#AC41F2);
+  -fx-border-color:#000000;
+  -fx-text-fill:#FFFFFF;
+  -fx-text-Style: Bold
+
+}
+
+.levelchoiceBox .label{
+  -fx-background-color : linear-gradient(to right, #48038C,#6C1ED9,#AC41F2);
+  -fx-alignment: CENTER;
+  -fx-border-color:#000000;
+  -fx-text-fill:#FFFFFF;
+  -fx-text-Style: Bold
+
+}
+.gameMenuButton {
+   -fx-background-radius:5px;
+   -fx-border-radius: 5px;
+   -fx-border-weight: 3px;
+   -fx-border-color:#FFFFFF;
+   -fx-text-fill: #800080;
+   -fx-effect: dropshadow(three-pass-box, #FFFFFF, 4, 0, 3, 1) ;
+}
+
+.gameMenuButton: hover{
+    -fx-background-color: linear-gradient(to right,	#4B0082,#B388EB,#FF1493);
+    -fx-border-color: WHITE;
+    -fx-text-fill:#FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, #FFFFFF, 4, 0, 3, 1) ;
+}

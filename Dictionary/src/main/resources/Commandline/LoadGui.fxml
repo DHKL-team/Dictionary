@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="550.0" prefWidth="788.0"
+            xmlns="http://javafx.com/javafx/20.0.1">
+    <children>
+        <ImageView fitHeight="610.0" fitWidth="790.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Utils/image/4641611401ecb508c625eebe448da663.gif"/>
+            </image>
+        </ImageView>
+        <ProgressBar layoutX="289.0" layoutY="469.0" prefWidth="200.0"/>
+        <ImageView fitHeight="167.0" fitWidth="467.0" layoutX="169.0" layoutY="56.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../Utils/image/loadLabelremovebgpreview.png"/>
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

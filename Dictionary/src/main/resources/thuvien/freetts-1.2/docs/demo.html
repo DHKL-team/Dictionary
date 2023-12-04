@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+    <META CONTENT="text/html; charset=iso-8859-1" HTTP-EQUIV="CONTENT-TYPE">
+    <TITLE>FreeTTS Speech Synthesis Demonstration </title>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<CENTER>
+    <TABLE BGCOLOR="#bbbae2" BORDER=0 CELLPADDING=2 CELLSPACING=2 STYLE="page-break-before: always" WIDTH=100%>
+        <TR>
+            <TD WIDTH=100%>
+                <H2 ALIGN=CENTER><I>FreeTTS</I> - Speech Synthesis
+                    Demonstration</h2>
+            </TD>
+        </TR>
+    </TABLE>
+</CENTER>
+
+
+<h1> Unlimited Domain Synthesis </h1>
+Type some English text, and click 'Synthesize' to hear an unlimited
+domain voice speak your text.
+<center>
+    <FORM ACTION="kevin" ENCTYPE="application/x-www-form-urlencoded"
+          METHOD="POST">
+        <TEXTAREA COLS=60 NAME="content" ROWS=6></TEXTAREA><br>
+        <B>Audio format:</B>
+        <SELECT NAME="audio">
+            <OPTION>.aif
+            <OPTION SELECTED>.wav
+            <OPTION>.au
+        </SELECT>
+
+        <B>Voice:</B>
+        <SELECT NAME="voice">
+            <OPTION SELECTED>8 Khz
+            <OPTION> 16 Khz
+        </SELECT>
+        <input type="submit" value="Synthesize"/>
+    </FORM>
+</center>
+
+<hr>
+<h1> Limited Domain Synthesis </h1>
+In certain domains, the output is well defined. In these domains we
+can use limited-domain synthesis to generate higher quality output.
+Click 'Synthesize' to hear a limited-domain voice that
+tells the time on the server.
+<center>
+    <FORM ACTION="alan" ENCTYPE="application/x-www-form-urlencoded"
+          METHOD="POST">
+        <B>Audio format:</B>
+        <SELECT NAME="audio">
+            <OPTION>.aif
+            <OPTION SELECTED>.wav
+            <OPTION>.au
+        </SELECT>
+        <input type="submit" value="Synthesize"/>
+    </FORM>
+</center>
+<hr>
+<h1>Pre-synthesized demos </h1>
+<P> Here are some pre-rendered samples
+<UL>
+    <LI>Talking clock (16k limited-domain voice) <FONT COLOR="#ff0000"><A
+            HREF="audio/12-35.au"><FONT SIZE=3>au</FONT></A><FONT SIZE=3>
+    </FONT><A HREF="audio/12-35.wav"><FONT SIZE=3>wav</FONT></A><FONT SIZE=3>
+        <FONT COLOR="#000000"> </FONT> </FONT></FONT>
+    <LI>Talking machine(8k voice) <FONT COLOR="#ff0000"><A
+            HREF="audio/talkforever.au"><FONT SIZE=3>au</FONT></A><FONT SIZE=3>
+    </FONT><A HREF="audio/talkforever.wav"><FONT SIZE=3>wav</FONT></A><FONT SIZE=3>
+        <FONT COLOR="#000000"> </FONT> </FONT></FONT>
+    <LI>Talking machine (16k voice) <FONT COLOR="#ff0000"><A
+            HREF="audio/talkforever16.au"><FONT SIZE=3>au</FONT></A><FONT SIZE=3>
+    </FONT></FONT><FONT COLOR="#ff0000"><A
+            HREF="audio/talkforever16.wav"><FONT SIZE=3>wav</FONT></A><FONT SIZE=3>
+        <FONT COLOR="#000000"> </FONT> </FONT></FONT>
+    <LI>Susie Shines Shoes(16k voice) <FONT COLOR="#ff0000"><A
+            HREF="audio/shoeshineshop.au"><FONT SIZE=3>au</FONT></A><FONT SIZE=3>
+    </FONT><A HREF="audio/shoeshineshop.wav"><FONT SIZE=3>wav</FONT></A><FONT SIZE=3>
+        <FONT COLOR="#000000"> </FONT> </FONT></FONT>
+    <LI>Cookie Cooks (16k voice) <FONT COLOR="#ff0000"><A
+            HREF="audio/cookiecooks.au"><FONT SIZE=3>au</FONT></A><FONT SIZE=3>
+    </FONT><A HREF="audio/cookiecooks.wav"><FONT SIZE=3>wav</FONT></A><FONT SIZE=3>
+    </FONT></FONT><FONT SIZE=3><FONT COLOR="#000000"> </FONT></FONT>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="679.0" prefWidth="1030.0" styleClass="studyPane"
+            stylesheets="@../Utils/Style.css " xmlns="http://javafx.com/javafx/21"
+            fx:controller="Control.StudyController">
+    <children>
+        <Label fx:id="questionLabel" alignment="CENTER" layoutX="88.0" layoutY="87.0" prefHeight="310.0"
+               prefWidth="686.0" styleClass="questionLabel" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="66.0"/>
+        <ImageView fx:id="backButton" fitHeight="58.0" fitWidth="108.0" layoutX="11.0" layoutY="14.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Utils/image/left-arrow.png"/>
+            </image>
+        </ImageView>
+        <StackPane fx:id="stackPane" layoutX="79.0" layoutY="418.0" prefHeight="124.0" prefWidth="659.0"
+                   AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="79.0"/>
+        <ImageView fx:id="correctLabel" fitHeight="168.0" fitWidth="200.0" layoutX="851.0" layoutY="14.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../Utils/image/outputonlinegiftools.gif"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="wrongLabel" fitHeight="58.0" fitWidth="71.0" layoutX="922.0" layoutY="72.0"
+                   nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="922.0"
+                   AnchorPane.rightAnchor="50.0">
+            <image>
+                <Image url="@../Utils/image/wrongLabel.gif"/>
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

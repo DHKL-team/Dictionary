@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="paneSwitch" prefHeight="645.0" prefWidth="819.0"
+            style="-fx-background-color: #EEEEEE;" styleClass="PanelSearch" stylesheets="@../Utils/Style.css "
+            xmlns="http://javafx.com/javafx/21" fx:controller="Control.SearchController">
+    <children>
+        <AnchorPane layoutX="31.0" prefHeight="66.0" prefWidth="789.0" style="-fx-background-color: #FFFFFF;"
+                    styleClass="searchandavatararea">
+            <children>
+                <TextField fx:id="searchField" layoutX="57.0" layoutY="12.0" prefHeight="40.0" prefWidth="382.0"
+                           style="-fx-background-color: #EEEEEE;" styleClass="searchField">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </TextField>
+                <JFXButton layoutX="8.0" layoutY="7.0" prefHeight="46.0" prefWidth="51.0" text=" "/>
+                <ImageView fx:id="smallSearch" fitHeight="23.0" fitWidth="26.0" layoutX="22.0" layoutY="19.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Utils/image/search__2_-removebg-preview.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="52.0" layoutY="92.0" prefHeight="518.0" prefWidth="243.0" styleClass="DanhSachTuLienQuan"
+                    AnchorPane.leftAnchor="52.0">
+            <children>
+                <Label alignment="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="82.0" prefWidth="243.0"
+                       styleClass="defLabel" text="SIMILAR WORD" textFill="#ece2e2" AnchorPane.leftAnchor="-1.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
+                <ListView fx:id="similarLabel" fixedCellSize="0.0" layoutX="-1.0" layoutY="78.0"
+                          nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleMouseClickAWord" prefHeight="445.0"
+                          prefWidth="243.0" styleClass="list-cell" AnchorPane.rightAnchor="0.0"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="372.0" layoutY="92.0" prefHeight="518.0" prefWidth="402.0" styleClass="ResultArea">
+            <children>
+                <Label alignment="TOP_CENTER" layoutX="-1.0" layoutY="-2.0" prefHeight="82.0" prefWidth="402.0"
+                       styleClass="defLabel" textFill="#ece2e2">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </Label>
+                <ImageView fx:id="yellowStar" fitHeight="25.0" fitWidth="25.0" layoutX="252.0" layoutY="50.0"
+                           pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../Utils/image/favourite_super.png"/>
+                    </image>
+                </ImageView>
+                <HBox layoutX="98.0" layoutY="45.0" prefHeight="40.0" prefWidth="204.0">
+                    <children>
+                        <JFXButton onAction="#TextToSpeech" prefHeight="33.0" prefWidth="51.0" styleClass="loaButton">
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color/>
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0"/>
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <font>
+                                <Font size="1.0"/>
+                            </font>
+                        </JFXButton>
+                        <JFXButton fx:id="deleteButton" alignment="BOTTOM_RIGHT" ellipsisString=""
+                                   onAction="#clickdeleteButton" prefHeight="31.0" prefWidth="46.0"
+                                   styleClass="removeButton"/>
+                        <JFXButton fx:id="updateButton" onAction="#clickupdateButton" prefHeight="30.0" prefWidth="34.0"
+                                   styleClass="updateButton" text=" "/>
+                        <JFXButton fx:id="favorButton" onAction="#clickfavorButton" prefHeight="34.0" prefWidth="24.0"
+                                   styleClass="favorButton" text=" "/>
+                    </children>
+                </HBox>
+                <TextArea fx:id="LabelKetQua" layoutY="140.0" prefHeight="379.0" prefWidth="402.0"
+                          styleClass="explantionArea" wrapText="true"/>
+                <Label fx:id="tagertResult" layoutX="-2.0" layoutY="80.0" prefHeight="57.0" prefWidth="402.0"
+                       styleClass="tagertArea" AnchorPane.bottomAnchor="382.0" AnchorPane.leftAnchor="0.0"
+                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                    <font>
+                        <Font size="28.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="pronunLabel" layoutX="13.0" layoutY="121.0" prefHeight="18.0" prefWidth="167.0"
+                       style="-fx-background-color: TRANSPARENT;" textFill="#015c92">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="132.0" layoutY="8.0" prefHeight="50.0" prefWidth="126.0"
+                       text="DEFINITION" textFill="#ece2e2">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <JFXButton fx:id="saveButton" layoutX="689.0" layoutY="612.0" onAction="#clickSaveButton"
+                   styleClass="saveButton" text="Save">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </JFXButton>
+    </children>
+</AnchorPane>
