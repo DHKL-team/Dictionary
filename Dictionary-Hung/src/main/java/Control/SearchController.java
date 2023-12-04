@@ -191,7 +191,9 @@ public class SearchController extends DatabaseController implements Initializabl
 
     @FXML
    private void clickfavorButton(){
-        addwordtodataBase(target,explain);
+
+        if(target!= null && !target.isEmpty())
+            addwordtodataBase(target,explain);
     }
 
     @FXML

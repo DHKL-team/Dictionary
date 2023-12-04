@@ -65,7 +65,8 @@ public class DictionaryCommandLine {
         String file = "./src/main/resources/Utils/tudien.txt";
         dictionaryMng.insertFromFile(file);
         wordListChange = true;
-       /// dfs(wordList, dictionary.getRoot());
+        wordList.clear();
+        dfs(wordList, dictionary.getRoot());
     }
 
     public String dictionaryLookup(String target) {
