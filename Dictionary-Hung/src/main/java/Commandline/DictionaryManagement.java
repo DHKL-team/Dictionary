@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
 
 public class DictionaryManagement {
 
+    Dictionary dictionary = Dictionary.getInstance();
+
     private DictionaryManagement() {
 
     }
@@ -16,11 +18,6 @@ public class DictionaryManagement {
         return SingletonHelper.INSTANCE;
     }
 
-    private static class SingletonHelper {
-        private static final DictionaryManagement INSTANCE = new DictionaryManagement();
-    }
-
-    Dictionary dictionary = Dictionary.getInstance();
     public void insertFromFile(String file) throws FileNotFoundException {
         File f1 = new File(file);
         Scanner scan = new Scanner(f1);
@@ -50,11 +47,11 @@ public class DictionaryManagement {
 
     public String dictionaryLookup(String target) {
         String result = "";
-        if (dictionary.search(target) != null &&  dictionary.search(target).getWord_pronunciation() != null) {
+        if (dictionary.search(target) != null && dictionary.search(target).getWord_pronunciation() != null) {
             result += dictionary.search(target).getWord_pronunciation() + '\n' + dictionary.search(target).getWord_explain();
             return result;
         }
-        if (dictionary.search(target) != null){
+        if (dictionary.search(target) != null) {
             result += dictionary.search(target).getWord_explain();
         }
         return result;
@@ -67,13 +64,19 @@ public class DictionaryManagement {
     public void addData(String target, String pronunciation, String explain) {
         dictionary.insert(new Word(target, pronunciation, explain));
     }
+
     public void updateData(String target, String explain) {
         if (dictionary.search(target) != null) {
             dictionary.search(target).setWord_explain(explain);
         }
     }
+
     public Word removeData(String target) {
         return dictionary.remove(target);
+    }
+
+    private static class SingletonHelper {
+        private static final DictionaryManagement INSTANCE = new DictionaryManagement();
     }
 
 }

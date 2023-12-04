@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="647.0" prefWidth="817.0" style="-fx-background-color: #E8E9EB;"
+            stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="Control.MyWordControl">
+    <children>
+        <Label alignment="TOP_CENTER" layoutX="69.0" layoutY="-1.0" prefHeight="102.0" prefWidth="817.0"
+               styleClass="mywordLabel" text="MY FAVOURITE WORD" textFill="WHITE" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+        <JFXButton fx:id="studyButton" layoutX="171.0" layoutY="558.0" prefHeight="54.0" prefWidth="498.0"
+                   styleClass="studyButton" text="STUDY" textFill="#f2f2f2"/>
+        <ListView fx:id="mywordList" layoutX="161.0" layoutY="110.0" onMouseClicked="#handleMouseClickAWord"
+                  prefHeight="439.0" prefWidth="518.0" style="-fx-border-color: #15267D; -fx-border-width: 1;"
+                  styleClass="list-cell"/>
+        <ImageView fitHeight="31.0" fitWidth="47.0" layoutX="181.0" layoutY="570.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../Utils/image/menu-icon.png"/>
+            </image>
+        </ImageView>
+        <Label/>
+        <Label layoutX="242.0" layoutY="566.0" prefHeight="38.0" prefWidth="3.0" style="-fx-background-color: white;"/>
+        <ProgressBar fx:id="percentwordStudy" layoutX="121.0" layoutY="78.0" prefHeight="11.0" prefWidth="599.0"
+                     progress="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="98.0"/>
+        <Label fx:id="numberofWord" layoutX="645.0" layoutY="50.0" prefHeight="18.0" prefWidth="81.0" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="card" alignment="CENTER" layoutX="202.0" layoutY="153.0" prefHeight="314.0" prefWidth="433.0"
+               styleClass="flashCard" text="Label">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <ImageView fx:id="closeButton" fitHeight="31.0" fitWidth="26.0" layoutX="601.0" layoutY="161.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Utils/image/close_1-removebg-preview.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="removeWordButton" fitHeight="26.0" fitWidth="26.0" layoutX="205.0" layoutY="434.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Utils/image/remove%20(1).png"/>
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

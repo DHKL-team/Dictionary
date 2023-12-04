@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="647.0" prefWidth="817.0" stylesheets="@../Utils/Style.css"
+            xmlns="http://javafx.com/javafx/20.0.1" fx:controller="Control.GoogleTranslator">
+    <children>
+        <Pane layoutY="-3.0" prefHeight="352.0" prefWidth="818.0" styleClass="paneGgtrans">
+            <children>
+                <ChoiceBox fx:id="targetLan" accessibleRole="CHECK_MENU_ITEM" layoutX="511.0" layoutY="115.0"
+                           prefHeight="25.0" prefWidth="182.0" styleClass="transButton"/>
+                <ImageView fx:id="ExchangeButton" fitHeight="55.0" fitWidth="68.0" layoutX="382.0" layoutY="99.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Utils/image/exchangeIcon.png"/>
+                    </image>
+                </ImageView>
+                <ChoiceBox fx:id="sourceLan" accessibleRole="CHECK_MENU_ITEM" layoutX="128.0" layoutY="115.0"
+                           prefHeight="26.0" prefWidth="174.0" styleClass="transButton"/>
+                <ImageView fitHeight="55.0" fitWidth="66.0" layoutX="382.0" layoutY="14.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../Utils/image/google.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <JFXButton fx:id="Translate" layoutX="353.0" layoutY="560.0" onAction="#Translate" prefHeight="26.0"
+                   prefWidth="110.0" styleClass="transButton" text="TRANSLATE">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </JFXButton>
+        <TextArea fx:id="intxt" layoutX="76.0" layoutY="161.0" prefHeight="352.0" prefWidth="304.0"
+                  styleClass="GgtransTextArea" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="437.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextArea>
+        <TextArea fx:id="outtxt" layoutX="475.0" layoutY="161.0" prefHeight="352.0" prefWidth="310.0"
+                  styleClass="GgtransTextArea" AnchorPane.rightAnchor="58.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextArea>
+        <JFXButton layoutX="137.0" layoutY="488.0" onAction="#TextToSpeech"/>
+    </children>
+</AnchorPane>
