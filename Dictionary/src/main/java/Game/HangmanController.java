@@ -185,7 +185,6 @@ public class HangmanController extends Game implements Initializable {
         }
         hp = 7;
         isWin = false;
-        System.out.println(1);
         word = randomWord();
         while (word == null) {
             word = randomWord();

@@ -48,7 +48,6 @@ public class Game extends DatabaseController {
             value = rand.nextInt(55000);
             target = wordList.get(value).getWord_target();
         }
-        System.out.println(target);
         return wordList.get(value);
     }
 
