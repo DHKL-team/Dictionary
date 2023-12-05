@@ -3,10 +3,10 @@
 
 
 ## Contributors
-Hoàng Đăng Khải
-Vũ Việt Hùng
-Lê Văn Lương
-Đỗ Khánh Duy
+- Hoàng Đăng Khải
+- Vũ Việt Hùng
+- Lê Văn Lương
+- Đỗ Khánh Duy
 
 ## Introduction
 
@@ -47,8 +47,8 @@ Modify options -> Add VM options
 
 ## Preview
 
-<img width="1095" alt="Screenshot 2023-12-05 at 14 52 32" src="https://github.com/DHKL-team/Dictionary/assets/124850786/4b7b6994-72d8-497f-8c49-e5409e46f63a">
 <img width="974" alt="Screenshot 2023-12-05 at 15 38 13" src="https://github.com/DHKL-team/Dictionary/assets/124850786/a55217c1-844a-429d-9376-29c840f9ca42">
+<img width="1030" alt="Screenshot 2023-12-05 at 14 54 46" src="https://github.com/DHKL-team/Dictionary/assets/124850786/990ce9fd-6cb4-40a3-a061-639e7dc6fad5">
 <img width="1031" alt="Screenshot 2023-12-05 at 14 53 28" src="https://github.com/DHKL-team/Dictionary/assets/124850786/cc2b878d-119b-4ce0-a190-5ea43ad00b32">
 
 
