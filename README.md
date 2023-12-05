@@ -6,7 +6,7 @@
 - Hoàng Đăng Khải
 - Vũ Việt Hùng
 - Lê Văn Lương
-- Đỗ Khánh Duy
+- Trần Khánh Duy
 
 ## Introduction
 
