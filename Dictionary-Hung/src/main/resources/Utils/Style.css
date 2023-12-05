@@ -1,4 +1,4 @@
-.menuItem: hover{
+.menuItem:hover{
         -fx-background-color: linear-gradient(to right,#8093F1,#B388EB,#F7AEF8);
         -fx-border-color: WHITE;
         -fx-border-width:0px 0px 0px 5px;
@@ -42,24 +42,24 @@
 }
 
 .addLabel{
--fx-background-color : #00B7FF;
+-fx-background-color : #C9A2F2;
 -fx-border-radius: 10;
 -fx-background-radius: 10;
 }
 
 .addField{
--fx-background-color :#7D5683;
+-fx-background-color :#CEC7FD;
 -fx-border-radius :15;
 -fx-background-radius:15
 }
 
 .confirmButton {
--fx-background-color : #00B7FF;
+-fx-background-color :#C9A2F2;
 -fx-border-radius: 10;
 -fx-background-radius: 10;
 }
 
-.confirmButton: hover{
+.confirmButton:hover{
      -fx-background-color : #C6EA8D;
      -fx-border-radius: 10;
      -fx-background-radius: 10;
@@ -114,9 +114,7 @@ list-cell:filled:hover,
     -fx-graphic: url('../Utils/image/favourite_normal.png');
 }
 
-.favorButton:hover {
-    -fx-graphic: url('../Utils/image/favourite_hover.png');
-}
+
 
 .removeButton {
    -fx-graphic: url('../Utils/image/remove.png');
@@ -230,8 +228,7 @@ list-cell:filled:hover,
 }
 
 .guessGameGridPane {
-    -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
-    -fx-border-color: #000000;
+    -fx-background-color: TRANSPARENT;
     -fx-text-fill: #000000;
     -fx-font-size: 30px;
     -fx-font-weight: bold;
@@ -244,20 +241,16 @@ list-cell:filled:hover,
 }
 
 .guessGameGrid {
-    -fx-background-color: linear-gradient(to right,#BCECFF,#C2BBFF);
-    -fx-border-width:2px;
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    n-fx-border-width:5px;
     -fx-background-radius:5px;
     -fx-border-radius:5px;
 }
 
 .buttonWord {
-   -fx-background-color : linear-gradient(to bottom, #48038C,#6C1ED9,#AC41F2);
-   -fx-boder-coloer: #0B0340;
-   -fx-border-radius: 40px;
-   -fx-background-radius: 40px;
-   -fx-pref-height:50;
-   -fx-pref-weight:50;
-   -fx-text-fill:#FFFFFF;
+   -fx-background-color : TRANSPARENT;
+    -fx-text-fill:#000000;
+    -fx-text-width: 700;
    -fx-text-Style: Bold;
 
 }
@@ -271,17 +264,20 @@ list-cell:filled:hover,
 }
 
 .backButtonGuess{
-  -fx-background-color : linear-gradient(to right, #48038C,#6C1ED9,#AC41F2);
-  -fx-border-color:#000000;
+  -fx-background-color : rgba(0, 0, 0, 0.3);
+  -fx-border-color:#FFFFFF;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-border-weight: 5px ;
   -fx-text-fill:#FFFFFF;
-  -fx-text-Style: Bold
+  -fx-text-Style: Bold;
 
 }
 
-.levelchoiceBox .label{
-  -fx-background-color : linear-gradient(to right, #48038C,#6C1ED9,#AC41F2);
+.levelchoiceBox {
+  -fx-background-color : rgba(0, 0, 0, 0.3);
   -fx-alignment: CENTER;
-  -fx-border-color:#000000;
+  -fx-border-color:#FFFFFF;
   -fx-text-fill:#FFFFFF;
   -fx-text-Style: Bold
 
@@ -295,9 +291,21 @@ list-cell:filled:hover,
    -fx-effect: dropshadow(three-pass-box, #FFFFFF, 4, 0, 3, 1) ;
 }
 
-.gameMenuButton: hover{
+.gameMenuButton:hover{
     -fx-background-color: linear-gradient(to right,	#4B0082,#B388EB,#FF1493);
     -fx-border-color: WHITE;
     -fx-text-fill:#FFFFFF;
     -fx-effect: dropshadow(three-pass-box, #FFFFFF, 4, 0, 3, 1) ;
+}
+
+.mic {
+   -fx-graphic: url('../Utils/image/mic.png');
+}
+
+.stop{
+   -fx-graphic: url('../Utils/image/stopbutton.png');
+}
+
+.loa {
+ -fx-graphic: url('../Utils/image/speaker.png');
 }

@@ -19,21 +19,24 @@ public class Game extends DatabaseController {
     protected int turns;
     protected int score;
     protected List<Word> wordList;
-
-    Random rand;
-
     protected int hp;
+
+    protected Random rand;
+
     public Game() throws FileNotFoundException {
-        rand = new Random();
         this.score = 0;
+        rand = new Random();
         wordList = DictionaryCommandLine.getInstance().getWordList();
     }
+
     public int getTurns() {
         return turns;
     }
+
     public void setTurns(int turns) {
         this.turns = turns;
     }
+
     public void setScore(int score) {
         this.score = score;
     }
@@ -41,22 +44,23 @@ public class Game extends DatabaseController {
     public Word randomWord() {
         int value = rand.nextInt(55000);
         String target = wordList.get(value).getWord_target();
-        while (target.contains(" ") || target.contains("-")) {
+        while (target.trim().contains(" ") || target.contains("-") || target.trim().length() > 12) {
             value = rand.nextInt(55000);
+            target = wordList.get(value).getWord_target();
         }
         return wordList.get(value);
     }
 
-    public void switchtoGameMenu() throws IOException {
+    public void switchToGameMenu() throws IOException {
         URL url = new File("./src/main/resources/Commandline/MenuGame.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root,1030,679);
+        Scene scene = new Scene(root, 1030, 679);
         Main.stageRefer.setScene(scene);
-        Main.moveScreen(root,Main.stageRefer);
+        Main.moveScreen(root, Main.stageRefer);
         Main.stageRefer.show();
     }
 
-    public void ExitFunc(){
+    public void ExitFunc() {
         System.exit(0);
     }
 

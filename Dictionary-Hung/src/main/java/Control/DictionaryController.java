@@ -21,36 +21,30 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DictionaryController extends DatabaseController  implements Initializable {
+public class DictionaryController extends DatabaseController implements Initializable {
 
-    private  Stage stage;
+    DictionaryCommandLine dictionaryCommandLine = DictionaryCommandLine.getInstance();
+    private Stage stage;
     @FXML
     private ImageView ExitIcon;
-
     @FXML
     private JFXButton searchButton;
     @FXML
     private JFXButton addWordButton;
-
     @FXML
     private JFXButton gameButton;
-
     @FXML
     private JFXButton googleTranslateButton;
-
     @FXML
     private AnchorPane paneSwitch;
-
     @FXML
     private ImageView miniIcon;
-
     @FXML
-    private  JFXButton myWordButton;
-    DictionaryCommandLine dictionaryCommandLine = DictionaryCommandLine.getInstance();
+    private JFXButton myWordButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        connectdataBase();
+
         searchButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -120,48 +114,48 @@ public class DictionaryController extends DatabaseController  implements Initial
         }
     }
 
-    public void switchtoStudy() throws  IOException{
+    public void switchtoStudy() throws IOException {
         URL url = new File("./src/main/resources/Commandline/StudyGui.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root,1030,679);
+        Scene scene = new Scene(root, 1030, 679);
         Main.stageRefer.setScene(scene);
-        Main.moveScreen(root,Main.stageRefer);
+        Main.moveScreen(root, Main.stageRefer);
         Main.stageRefer.show();
     }
 
-    public void switchtoDictionaryMain() throws  IOException {
+    public void switchtoDictionaryMain() throws IOException {
         URL url = new File("./src/main/resources/Commandline/DictionaryGui.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root,1030,679);
+        Scene scene = new Scene(root, 1030, 679);
         Main.stageRefer.setScene(scene);
-        Main.moveScreen(root,Main.stageRefer);
+        Main.moveScreen(root, Main.stageRefer);
         Main.stageRefer.show();
     }
 
-    public void switchtoGameMenu() throws  IOException {
+    public void switchtoGameMenu() throws IOException {
         URL url = new File("./src/main/resources/Commandline/MenuGame.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root,1030,679);
+        Scene scene = new Scene(root, 1030, 679);
         Main.stageRefer.setScene(scene);
-        Main.moveScreen(root,Main.stageRefer);
+        Main.moveScreen(root, Main.stageRefer);
         Main.stageRefer.show();
     }
 
-    public void switchtoGuessGame() throws  IOException {
+    public void switchtoGuessGame() throws IOException {
         URL url = new File("./src/main/resources/Commandline/GuessWordGame.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root,1030,679);
+        Scene scene = new Scene(root, 1030, 679);
         Main.stageRefer.setScene(scene);
-        Main.moveScreen(root,Main.stageRefer);
+        Main.moveScreen(root, Main.stageRefer);
         Main.stageRefer.show();
     }
 
-    public void switchtoHangmanGame() throws  IOException{
-        URL url = new File("./src/main/resources/Commandline/hangman.fxml").toURI().toURL();
+    public void switchtoHangmanGame() throws IOException {
+        URL url = new File("./src/main/resources/Commandline/HangMan.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root,900,645);
+        Scene scene = new Scene(root, 900, 645);
         Main.stageRefer.setScene(scene);
-        Main.moveScreen(root,Main.stageRefer);
+        Main.moveScreen(root, Main.stageRefer);
         Main.stageRefer.show();
     }
 }

@@ -9,6 +9,9 @@ module Commandline {
     requires java.sql;
     requires java.speech.api;
     requires freetts;
+    requires java.desktop;
+    requires javaFlacEncoder;
+    requires json.lib;
 
 
     opens Commandline to javafx.fxml;
