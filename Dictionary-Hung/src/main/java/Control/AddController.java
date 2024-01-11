@@ -25,20 +25,24 @@ import java.util.ResourceBundle;
 
 public class AddController extends DatabaseController implements Initializable {
 
+    @FXML
+    private TextField add_EN;
+
+    @FXML
+    private TextField add_VN;
+
+    @FXML
+    private JFXButton confirmButton;
+
+    @FXML
+    private ListView<String> suggestList;
+
+    private Alerts alerts = new Alerts();
     DictionaryManagement dictionaryManagement = DictionaryManagement.getInstance();
+
     DictionaryCommandLine dictionaryCommandLine = DictionaryCommandLine.getInstance();
     ObservableList<String> list = FXCollections.observableArrayList();
     ObservableList<Word> listWord = FXCollections.observableArrayList();
-    @FXML
-    private TextField add_EN;
-    @FXML
-    private TextField add_VN;
-    @FXML
-    private JFXButton confirmButton;
-    @FXML
-    private ListView<String> suggestList;
-    private Alerts alerts = new Alerts();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         suggestList.setVisible(false);
@@ -55,12 +59,13 @@ public class AddController extends DatabaseController implements Initializable {
                 explain = explain.substring(tmp + 1);
                 explain = explain.trim() + "\n\n";
                 System.out.println(tmp + " " + pronunciation + "haha/n" + explain);
-                Alert alertConfirm = alerts.alertConfirmation("ADD WORD", "Do you want to add this word?");
+                Alert alertConfirm = alerts.alertConfirmation("ADD WORD","Do you want to add this word?") ;
                 Optional<ButtonType> option = alertConfirm.showAndWait();
-                if (option.get() == ButtonType.OK) {
-                    alerts.showAlertInfo("Word: " + tagert, "Add word to the dictionary successfully!");
+                if (option.get() == ButtonType.OK){
+                    alerts.showAlertInfo("Word: " + tagert,"Add word to the dictionary successfully!");
                     dictionaryManagement.addData(tagert, pronunciation, explain);
-                } else if (option.get() == ButtonType.CANCEL) {
+                }
+                else if (option.get() == ButtonType.CANCEL){
                     alerts.showAlertInfo("Information", "Changes are not recognized");
                 }
             }
@@ -68,17 +73,17 @@ public class AddController extends DatabaseController implements Initializable {
         });
 
         add_EN.setOnKeyTyped(new EventHandler<KeyEvent>() {
-
+            
             public void handle(KeyEvent keyEvent) {
-                String tagert = add_EN.getText();
-                findWordExist(tagert);
+               String tagert = add_EN.getText();
+               findWordExist(tagert);
             }
 
 
         });
     }
-
-    public void findWordExist(String target) {
+    
+    public void findWordExist(String target){
         list.clear();
 
         listWord = dictionaryCommandLine.dictionarySearch(Dictionary.getInstance().getRoot(), target);

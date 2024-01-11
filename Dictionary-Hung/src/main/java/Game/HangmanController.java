@@ -21,10 +21,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HangmanController extends Game implements Initializable {
-    private boolean isWin;
-    private String target;
-    private char[] guessedWord;
-    private Word word;
+
+    int hp;
+    boolean isWin;
+    String target = "";
+    char[] guessedWord;
 
     @FXML
     AnchorPane pane;
@@ -37,13 +38,11 @@ public class HangmanController extends Game implements Initializable {
 
     @FXML
     GridPane alphabet;
-
     @FXML
     ImageView backMenu;
 
     @FXML
     ImageView exit;
-
     @FXML
     ImageView stage1;
 
@@ -86,14 +85,11 @@ public class HangmanController extends Game implements Initializable {
     public HangmanController() throws FileNotFoundException {
         hp = 7;
         isWin = false;
-        word = null;
-        guessedWord = null;
-        target = "";
     }
 
     public void checkLetter(ActionEvent e) {
         boolean isCorrect = false;
-        Button sourceButton = (Button) e.getSource();
+        Button sourceButton = (Button)e.getSource();
         if (hp < 0 || sourceButton.getOpacity() == 0.4) return;
         sourceButton.setOpacity(0.4);
         String c = sourceButton.getText().toLowerCase();
@@ -125,37 +121,15 @@ public class HangmanController extends Game implements Initializable {
         } else {
             hp--;
             switch (hp) {
-                case 6:
-                    stage2.setVisible(true);
-                    stage1.setVisible(false);
-                    break;
-                case 5:
-                    stage3.setVisible(true);
-                    stage2.setVisible(false);
-                    break;
-                case 4:
-                    stage4.setVisible(true);
-                    stage3.setVisible(false);
-                    break;
-                case 3:
-                    stage5.setVisible(true);
-                    stage4.setVisible(false);
-                    break;
-                case 2:
-                    stage6.setVisible(true);
-                    stage5.setVisible(false);
-                    break;
-                case 1:
-                    stage7.setVisible(true);
-                    stage6.setVisible(false);
-                    break;
-                case 0:
-                    stage8.setVisible(true);
-                    stage7.setVisible(false);
-                    break;
+                case 6: stage2.setVisible(true); stage1.setVisible(false); break;
+                case 5: stage3.setVisible(true); stage2.setVisible(false); break;
+                case 4: stage4.setVisible(true); stage3.setVisible(false); break;
+                case 3: stage5.setVisible(true); stage4.setVisible(false); break;
+                case 2: stage6.setVisible(true); stage5.setVisible(false); break;
+                case 1: stage7.setVisible(true); stage6.setVisible(false); break;
+                case 0: stage8.setVisible(true); stage7.setVisible(false); break;
                 case -1:
-                    stage9.setVisible(true);
-                    stage8.setVisible(false);
+                    stage9.setVisible(true); stage8.setVisible(false);
                     result.setText("You lose :(");
                     pane.setOpacity(0.4);
                     pane2.setVisible(true);
@@ -164,8 +138,8 @@ public class HangmanController extends Game implements Initializable {
         }
     }
 
+    @FXML
     public void playAgain() {
-        System.out.println(1);
         pane2.setVisible(false);
         pane.setOpacity(1);
         stage1.setVisible(true);
@@ -179,16 +153,13 @@ public class HangmanController extends Game implements Initializable {
         stage9.setVisible(false);
         for (Node node : alphabet.getChildren()) {
             if (node instanceof JFXButton) {
-                JFXButton button = (JFXButton)node;
+                JFXButton button = (JFXButton) node;
                 button.setOpacity(1);
             }
         }
         hp = 7;
         isWin = false;
-        word = randomWord();
-        while (word == null) {
-            word = randomWord();
-        }
+        Word word = randomWord();
         target = word.getWord_target();
         System.out.println(target);
         guessedWord = new char[target.length()];
@@ -206,12 +177,11 @@ public class HangmanController extends Game implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        playAgain();
         backMenu.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    switchToGameMenu();
+                    switchtoGameMenu();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -221,10 +191,10 @@ public class HangmanController extends Game implements Initializable {
         exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                ExitFunc();
+               ExitFunc();
             }
         });
-
+        playAgain();
         wordText.setStyle("-fx-control-inner-background:#FFCCCC;");
         meanText.setStyle("-fx-control-inner-background:#FFCCCC;");
     }

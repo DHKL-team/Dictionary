@@ -4,7 +4,18 @@ import java.util.Arrays;
 
 public class Trie {
     static final int ALPHABET_SIZE = 28;
-    public static TrieNode root = new TrieNode();
+
+    public static class TrieNode {
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+        boolean isEndOfWord;
+        Word word;
+
+        TrieNode() {
+            isEndOfWord = false;
+            word = null;
+            Arrays.fill(children, null);
+        }
+    }
 
     private int convertIndex(char c) {
         if (c == ' ') return 0;
@@ -12,10 +23,11 @@ public class Trie {
         return c - 'a' + 2;
     }
 
+    public static TrieNode root = new TrieNode();
+
     public TrieNode getRoot() {
         return root;
     }
-
     public void insert(String key, String value) {
         key = key.toLowerCase();
         int level;
@@ -70,7 +82,6 @@ public class Trie {
         }
         return null;
     }
-
     public Word remove(String key) {
         int level;
         int length = key.length();
@@ -91,17 +102,5 @@ public class Trie {
             return tmp;
         }
         return null;
-    }
-
-    public static class TrieNode {
-        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
-        boolean isEndOfWord;
-        Word word;
-
-        TrieNode() {
-            isEndOfWord = false;
-            word = null;
-            Arrays.fill(children, null);
-        }
     }
 }

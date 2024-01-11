@@ -9,16 +9,15 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game.GuessWordGameController">
    <children>
       <AnchorPane id="paneSwitch" fx:id="paneSwitch" focusTraversable="true" layoutX="-7.0" prefHeight="679.0" prefWidth="1030.0" AnchorPane.leftAnchor="-7.0">
          <children>
-            <ImageView fitHeight="689.0" fitWidth="1033.0" layoutX="6.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="682.0" fitWidth="1039.0" layoutX="6.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/image/ezBg.jpg" />
+                  <Image url="@../Utils/image/bgGuessGame.jpg" />
                </image>
             </ImageView>
             <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true" layoutX="428.0" layoutY="81.0" prefHeight="332.0" prefWidth="217.0" styleClass="guessGameGrid">
@@ -37,64 +36,43 @@
             </GridPane>
             <Label alignment="CENTER" layoutX="759.0" layoutY="119.0" prefHeight="38.0" prefWidth="110.0" styleClass="backButtonGuess" text="Attemps Left:">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font size="16.0" />
                </font></Label>
             <Label fx:id="attempleft" layoutX="880.0" layoutY="120.0" prefHeight="38.0" prefWidth="34.0" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="19.0" />
+                  <Font name="System Bold" size="16.0" />
                </font></Label>
-            <ChoiceBox fx:id="Level" layoutX="759.0" layoutY="179.0" prefHeight="38.0" prefWidth="150.0" styleClass="levelchoiceBox" />
-            <Button fx:id="gotolevel" layoutX="909.0" layoutY="179.0" mnemonicParsing="false" onAction="#GoToLevelFunc" prefHeight="38.0" prefWidth="50.0" styleClass="backButtonGuess" text="Try">
+            <Button fx:id="replay" layoutX="938.0" layoutY="639.0" mnemonicParsing="false" onAction="#replayFunction" text="Replay" />
+            <ChoiceBox fx:id="Level" layoutX="147.0" layoutY="119.0" prefHeight="38.0" prefWidth="150.0" styleClass="levelchoiceBox" />
+            <Button fx:id="gotolevel" layoutX="147.0" layoutY="167.0" mnemonicParsing="false" onAction="#GoToLevelFunc" prefHeight="38.0" prefWidth="50.0" styleClass="backButtonGuess" text="Try">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font size="16.0" />
                </font></Button>
-            <ImageView fx:id="exit" fitHeight="50.0" fitWidth="59.0" layoutX="982.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="240.0" fitWidth="227.0" layoutX="423.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/image/exitguessgame.png" />
+                  <Image url="@../Utils/image/discGame-removebg-preview.png" />
                </image>
             </ImageView>
-            <Circle fill="WHITE" layoutX="537.0" layoutY="556.0" opacity="0.83" radius="100.0" stroke="BLACK" strokeType="INSIDE" styleClass="circle" />
-            <ImageView fx:id="backtogamemenu" fitHeight="50.0" fitWidth="52.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Utils/image/backButtonGuessGame.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="arr4" alignment="CENTER" contentDisplay="CENTER" layoutX="516.0" layoutY="454.0" onMouseClicked="#eventMouseClick4" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
+            <Button fx:id="quaylai" layoutX="501.0" layoutY="519.0" mnemonicParsing="false" onAction="#Undo" prefHeight="52.0" prefWidth="70.0" styleClass="buttonWord" text="UNDO">
                <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Label fx:id="arr5" alignment="CENTER" contentDisplay="CENTER" layoutX="458.0" layoutY="490.0" onMouseClicked="#eventMouseClick5" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Label fx:id="arr6" alignment="CENTER" contentDisplay="CENTER" layoutX="437.0" layoutY="544.0" onMouseClicked="#eventMouseClick6" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Label fx:id="arr3" alignment="CENTER" contentDisplay="CENTER" layoutX="467.0" layoutY="596.0" onMouseClicked="#eventMouseClick3" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Label fx:id="arr7" alignment="CENTER" contentDisplay="CENTER" layoutX="558.0" layoutY="596.0" onMouseClicked="#eventMouseClick7" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Label fx:id="arr1" alignment="CENTER" contentDisplay="CENTER" layoutX="594.0" layoutY="544.0" onMouseClicked="#eventMouseClick1" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Label fx:id="arr2" alignment="CENTER" contentDisplay="CENTER" layoutX="573.0" layoutY="490.0" onMouseClicked="#eventMouseClick2" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font></Label>
-            <Button fx:id="quaylai" layoutX="502.0" layoutY="530.0" mnemonicParsing="false" onAction="#Undo" prefHeight="52.0" prefWidth="70.0" styleClass="buttonWord" text="UNDO">
-               <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <ImageView fx:id="replay" fitHeight="42.0" fitWidth="42.0" layoutX="982.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="arr4" alignment="CENTER" contentDisplay="CENTER" layoutX="581.0" layoutY="457.0" onMouseClicked="#eventMouseClick4" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <Label fx:id="arr5" alignment="CENTER" contentDisplay="CENTER" layoutX="557.0" layoutY="597.0" onMouseClicked="#eventMouseClick5" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <Label fx:id="arr6" alignment="CENTER" contentDisplay="CENTER" layoutX="479.0" layoutY="597.0" onMouseClicked="#eventMouseClick6" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <Label fx:id="arr3" alignment="CENTER" contentDisplay="CENTER" layoutX="449.0" layoutY="458.0" onMouseClicked="#eventMouseClick3" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <Label fx:id="arr7" alignment="CENTER" contentDisplay="CENTER" layoutX="602.0" layoutY="519.0" onMouseClicked="#eventMouseClick7" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <Label fx:id="arr1" alignment="CENTER" contentDisplay="CENTER" layoutX="428.0" layoutY="519.0" onMouseClicked="#eventMouseClick1" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <Label fx:id="arr2" alignment="CENTER" contentDisplay="CENTER" layoutX="515.0" layoutY="425.0" onMouseClicked="#eventMouseClick2" prefHeight="42.0" prefWidth="42.0" styleClass="buttonWord" text="Label" />
+            <ImageView fx:id="exit" fitHeight="50.0" fitWidth="59.0" layoutX="982.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/image/replayBut.png" />
+                  <Image url="@../Utils/image/emergency-exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="backtogamemenu" fitHeight="50.0" fitWidth="52.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/image/arrow-left.png" />
                </image>
             </ImageView>
          </children>

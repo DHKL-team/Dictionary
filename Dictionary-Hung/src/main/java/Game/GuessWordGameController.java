@@ -34,94 +34,77 @@ import javafx.scene.layout.GridPane;
 
 public class GuessWordGameController extends Game implements Initializable {
 	private static final int NUMBER_OF_LETTER = 7;
-	private static final char[] nguyenAm = {'A', 'E', 'U', 'O', 'I'};
 	private static int NUMBER_OF_LETTER_IN_WORD = 4;
 	private static List<String> arrLetters = new ArrayList<>(NUMBER_OF_LETTER);
 	private static List<String> resultArray = new ArrayList<>(5);
-	Stack<Label> st = new Stack<>();
-	private boolean flag = false;
+	private static final char []nguyenam = {'A','E','U','O','I'};
 	private String tmp = "";
 	private String str = "";
-	private int col = 0;
+	private int col = 0 ;
 	private int row = 0;
 	private int countLeft = 10;
 	private String source;
 	private String lv = "Choose Level";
-	@FXML
-	private Label arr1;
-	@FXML
-	private Label arr2;
-	@FXML
-	private Label arr3;
-	@FXML
-	private Label arr4;
-	@FXML
-	private Label arr5;
-	@FXML
-	private Label arr6;
-	@FXML
-	private Label arr7;
-	@FXML
-	private GridPane gridPane;
-	@FXML
-	private Button quaylai;
-	@FXML
-	private Label attempleft;
-	@FXML
-	private ImageView replay;
-	@FXML
-	private ImageView exit;
-	@FXML
-	private ImageView backtogamemenu;
-	@FXML
-	private Button gotolevel;
-	@FXML
-	private ChoiceBox<String> Level;
+	Stack<Label> st = new Stack<>();
 
 	public GuessWordGameController() throws FileNotFoundException {
 	}
 
-	public static void makeRandomLetters() {
-		if (arrLetters.isEmpty()) {
-			arrLetters.add("H");
-			arrLetters.add("T");
-			arrLetters.add("O");
-			arrLetters.add("I");
-			arrLetters.add("U");
-			arrLetters.add("A");
-			arrLetters.add("E");
-		}
-
-		for (int i = 0; i < 7; i++) {
-			char c;
-			String s = "";
-			if (i < 5) {
-				do {
-					c = (char) ('A' + Math.floor(Math.random() * 26));
-					s = String.valueOf(c);
-				}
-				while (arrLetters.contains(s));
-			} else {
-				do {
-					int x = (int) Math.floor(Math.random() * 4);
-					c = nguyenAm[x];
-					s = String.valueOf(c);
-				}
-				while (arrLetters.contains(s));
-			}
-			arrLetters.set(i, s);
-		}
-	}
 
 	@FXML
 	private void switchComponentLevel(String path) throws IOException {
 		URL url = new File(path).toURI().toURL();
 		Parent root = FXMLLoader.load(url);
-		Scene scene = new Scene(root, 1030, 679);
+		Scene scene = new Scene(root,1030,679);
 		Main.stageRefer.setScene(scene);
-		Main.moveScreen(root, Main.stageRefer);
+		Main.moveScreen(root,Main.stageRefer);
 		Main.stageRefer.show();
 	}
+	@FXML
+	private Label arr1;
+
+	@FXML
+	private Label arr2;
+
+	@FXML
+	private Label arr3;
+
+	@FXML
+	private Label arr4;
+
+	@FXML
+	private Label arr5;
+
+	@FXML
+	private Label arr6;
+
+	@FXML
+	private Label arr7;
+
+	@FXML
+	private GridPane gridPane;
+
+	@FXML
+	private Button quaylai;
+
+	@FXML
+	private Label attempleft;
+
+	@FXML
+	private Button replay;
+
+	@FXML
+	private ImageView exit;
+
+	@FXML
+	private ImageView backtogamemenu;
+
+	@FXML
+	private Button gotolevel;
+
+	@FXML
+	private ChoiceBox<String> Level;
+
 
 	@FXML
 	public void GoToLevelFunc() throws IOException {
@@ -130,7 +113,7 @@ public class GuessWordGameController extends Game implements Initializable {
 
 	@FXML
 	public void BackToGameMenuFunc() throws IOException {
-		switchToGameMenu();
+		switchtoGameMenu();
 	}
 
 	@FXML
@@ -177,35 +160,73 @@ public class GuessWordGameController extends Game implements Initializable {
 
 	@FXML
 	public void Undo() {
-		if (!st.isEmpty() && str.length() > 0) {
+		if(!st.isEmpty() && str.length() > 0) {
 			gridPane.getChildren().remove(st.pop());
-			str = str.substring(0, str.length() - 1);
-			col--;
+			str = str.substring(0,str.length() - 1);
+			col --;
 		}
 
 	}
 
 	@FXML
-	public void replayFunction() throws IOException {
+	public void replayFunction() throws IOException  {
 		switchComponentLevel("./src/main/resources/Commandline/GuessWordGame.fxml");
 	}
 
 	public void setLevel(String s) {
-		if (s.equals("Khó")) {
+		if(s.equals("Khó")) {
 			source = "./src/main/resources/Commandline/GuessWordGame5.fxml";
 			lv = "Khó";
 			NUMBER_OF_LETTER_IN_WORD = 5;
-		} else if (s.equals("Trung bình")) {
+		}
+		else if(s.equals("Trung bình")) {
 			source = "./src/main/resources/Commandline/GuessWordGame.fxml";
 			lv = "Trung bình";
 			NUMBER_OF_LETTER_IN_WORD = 4;
-		} else if (s.equals("Dễ")) {
+		}
+		else if(s.equals("Dễ")) {
 			source = "./src/main/resources/Commandline/GuessWordGame3.fxml";
 			lv = "Dễ";
 			NUMBER_OF_LETTER_IN_WORD = 3;
 		}
 		resultArray.clear();
 	}
+
+
+
+	public static void makeRandomLetters() {
+		if(arrLetters.isEmpty()) {
+			arrLetters.add("H");
+			arrLetters.add("T");
+			arrLetters.add("O");
+			arrLetters.add("I");
+			arrLetters.add("U");
+			arrLetters.add("A");
+			arrLetters.add("E");
+		}
+
+		for(int i = 0 ; i < 7; i++) {
+			char c;
+			String s = "";
+			if(i < 5) {
+				do {
+					c = (char)('A' + Math.floor(Math.random() * 26));
+					s = String.valueOf(c);
+				}
+				while(arrLetters.contains(s));
+			}
+			else {
+				do {
+					int x = (int)Math.floor(Math.random()*4);
+					c = nguyenam[x];
+					s = String.valueOf(c);
+				}
+				while(arrLetters.contains(s));
+			}
+			arrLetters.set(i, s);
+		}
+	}
+
 
 	public void addWord() throws SQLException {
 		Label lb = new Label(tmp);
@@ -216,23 +237,25 @@ public class GuessWordGameController extends Game implements Initializable {
 		st.push(lb);
 		col++;
 		str += tmp;
-		if (str.length() == NUMBER_OF_LETTER_IN_WORD) {
+		if(str.length() == NUMBER_OF_LETTER_IN_WORD) {
 			Statement state = connection.createStatement();
-			ResultSet result = state.executeQuery("select definition from wordlist where english = " + "'" + str + "'");
-			if (result.next() && !resultArray.contains(str)) {
+			ResultSet result = state.executeQuery("select definition from wordlist where english = "  + "'"+str+"'");
+			if(result.next()) {
 				row++;
 				resultArray.add(str);
-			} else {
-				for (int i = 0; i < NUMBER_OF_LETTER_IN_WORD; i++) gridPane.getChildren().remove(st.pop());
-				countLeft--;
+			}
+			else {
+				for(int i = 0 ; i < NUMBER_OF_LETTER_IN_WORD; i ++) gridPane.getChildren().remove(st.pop());
+				countLeft --;
 			}
 			str = "";
 			col = 0;
 			attempleft.setText(String.valueOf(countLeft));
 		}
-		if (countLeft > 0) {
-			if (resultArray.size() == 5) showWinningAlert();
-		} else showLosingAlert();
+		if(countLeft > 0 ) {
+			if(resultArray.size() == 5) showWinningAlert();
+		}
+		else showLosingAlert();
 	}
 
 	private void showWinningAlert() {
@@ -250,13 +273,9 @@ public class GuessWordGameController extends Game implements Initializable {
 		alert.setContentText("Hãy cố gắng ở lần thử tiếp theo!");
 		alert.showAndWait();
 	}
-
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		if (!flag) {
-			connectdataBase();
-			flag =true;
-		}
+         connectdataBase();
 		backtogamemenu.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
@@ -268,21 +287,10 @@ public class GuessWordGameController extends Game implements Initializable {
 			}
 		});
 
-		exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				ExitFunc();
-			}
-		});
-
-		replay.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				try {
-					replayFunction();
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}
 			}
 		});
 		makeRandomLetters();

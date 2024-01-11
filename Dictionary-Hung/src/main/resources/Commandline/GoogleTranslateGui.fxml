@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="paneSwitch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="817.0" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.GoogleTranslator">
+<AnchorPane fx:id="paneSwitch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="817.0" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.GoogleTranslator">
    <children>
       <Pane layoutY="-3.0" prefHeight="352.0" prefWidth="818.0" styleClass="paneGgtrans">
          <children>
@@ -39,13 +39,7 @@
          <font>
             <Font size="14.0" />
          </font></TextArea>
-      <JFXButton layoutX="137.0" layoutY="488.0" onAction="#TextToSpeech" prefHeight="26.0" prefWidth="35.0" styleClass="loa">
-         <font>
-            <Font size="1.0" />
-         </font></JFXButton>
-      <JFXButton fx:id="record" layoutX="94.0" layoutY="488.0" onAction="#SpeechToText" prefHeight="26.0" prefWidth="35.0" styleClass="mic">
-         <font>
-            <Font size="1.0" />
-         </font></JFXButton>
+      <JFXButton layoutX="137.0" layoutY="488.0" onAction="#TextToSpeech" text="Loa" />
+      <JFXButton fx:id="record" layoutX="85.0" layoutY="488.0" onAction="#SpeechToText" text="Mic" />
    </children>
 </AnchorPane>

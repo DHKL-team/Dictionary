@@ -11,13 +11,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
-
 public class DictionaryCommandLine {
 
-    DictionaryManagement dictionaryMng = DictionaryManagement.getInstance();
-    Dictionary dictionary = Dictionary.getInstance();
-    List<Word> wordList = new ArrayList<>();
-    boolean wordListChange = false;
     private DictionaryCommandLine() {
 
     }
@@ -26,24 +21,31 @@ public class DictionaryCommandLine {
         return SingletonHelper.INSTANCE;
     }
 
+    private static class SingletonHelper {
+        private static final DictionaryCommandLine INSTANCE = new DictionaryCommandLine();
+    }
+
+    DictionaryManagement dictionaryMng = DictionaryManagement.getInstance();
+    Dictionary dictionary = Dictionary.getInstance();
+    List<Word> wordList = new ArrayList<>();
+    boolean wordListChange = false;
     public List<Word> getWordList() {
         return wordList;
     }
-
     private void dfs(List<Word> list, Trie.TrieNode root) {
-        try {
-            for (int i = 0; i < Trie.ALPHABET_SIZE; i++) {
-                Trie.TrieNode tmp = root.children[i];
-                if (tmp != null) {
-                    if (tmp.isEndOfWord) {
-                        list.add(tmp.word);
-                    }
-                    dfs(list, tmp);
-                }
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Loi null pointerException");
-        }
+       try {
+           for (int i = 0; i < Trie.ALPHABET_SIZE; i++) {
+               Trie.TrieNode tmp = root.children[i];
+               if (tmp != null) {
+                   if (tmp.isEndOfWord) {
+                       list.add(tmp.word);
+                   }
+                   dfs(list, tmp);
+               }
+           }
+       } catch (NullPointerException e){
+           System.out.println("Loi null pointerException");
+       }
 
     }
 
@@ -59,7 +61,6 @@ public class DictionaryCommandLine {
                     wordList.get(number).getWord_explain());
         }
     }
-
     public void dictionaryBasic() throws FileNotFoundException {
         String file = "./src/main/resources/Utils/tudien.txt";
         dictionaryMng.insertFromFile(file);
@@ -72,6 +73,7 @@ public class DictionaryCommandLine {
         return dictionaryMng.dictionaryLookup(target);
     }
 
+
     public ObservableList<Word> dictionarySearch(Trie.TrieNode root, String target) {
         ObservableList<Word> list = FXCollections.observableArrayList();
         int index;
@@ -80,12 +82,13 @@ public class DictionaryCommandLine {
                 index = 0;
             } else if (target.charAt(i) == '-') {
                 index = 1;
-            } else index = target.charAt(i) - 'a' + 2;
-            if (root != null) {
-                root = root.children[index];
+            }
+            else index = target.charAt(i) - 'a' + 2;
+            if (root != null){
+            root = root.children[index];
             }
         }
-        if (root != null && root.isEndOfWord) {
+        if (root!=null && root.isEndOfWord) {
             list.add(root.word);
         }
         dfs(list, root);
@@ -184,9 +187,5 @@ public class DictionaryCommandLine {
 
             }
         }
-    }
-
-    private static class SingletonHelper {
-        private static final DictionaryCommandLine INSTANCE = new DictionaryCommandLine();
     }
 }

@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -20,12 +21,13 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StudyController extends MyWordControl implements Initializable {
+public class StudyController extends DatabaseController implements Initializable {
     @FXML
     public GridPane gridPane;
     @FXML
@@ -38,30 +40,30 @@ public class StudyController extends MyWordControl implements Initializable {
     private Label questionLabel;
     private ObservableList<String> list;
     private ObservableList<String> listDef;
-    private int CURRENT_ROW = 1;
+    private int CURRENTROW = 1;
     private int CURRENT_COLUMN = 1;
 
     private int MAX_COLUMN;
     private String chooseWord;
 
     private String chooseWordDef;
-    private int selectWordToStudy;
+    private int selectWordtoStudy;
     @FXML
     private ImageView correctLabel;
 
     @FXML
     private ImageView wrongLabel;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         connectdataBase();
         list = mywordList();
         listDef = mydefList();
         correctLabel.setVisible(false);
         wrongLabel.setVisible(false);
-        selectWordToStudy = 0;
-        chooseWord = list.get(selectWordToStudy);
-        chooseWordDef = listDef.get(selectWordToStudy);
+        selectWordtoStudy = 0;
+        chooseWord = list.get(selectWordtoStudy);
+        chooseWordDef = listDef.get(selectWordtoStudy);
         questionLabel.setText(chooseWordDef);
         MAX_COLUMN = chooseWord.length();
         gridPane = createGrid(MAX_COLUMN);
@@ -69,7 +71,8 @@ public class StudyController extends MyWordControl implements Initializable {
         gridPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                PressKey(gridPane, keyEvent);
+                System.out.println(1);
+                onKeyPress(gridPane, keyEvent);
             }
         });
         stackPane.getChildren().add(gridPane);
@@ -87,6 +90,7 @@ public class StudyController extends MyWordControl implements Initializable {
 
     public GridPane createGrid(int col) {
         GridPane table = new GridPane();
+        StringBuilder resultStringBuilder = new StringBuilder();
         for (int i = 1; i <= col; i++) {
             Label label = new Label();
             label.setAlignment(Pos.CENTER);
@@ -119,21 +123,21 @@ public class StudyController extends MyWordControl implements Initializable {
         return null;
     }
 
-    public void PressKey(GridPane gridPane, KeyEvent keyEvent) {
+    public void onKeyPress(GridPane gridPane, KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
-            PressEnter(gridPane);
+            onEntterPressed(gridPane);
         }
         if (keyEvent.getCode().isLetterKey()) {
-            PressLetterKey(gridPane, keyEvent);
+            onLetterPressed(gridPane, keyEvent);
         } else if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-            PressBlankSpace(gridPane);
+            onBackSpacePredded(gridPane);
         }
     }
 
-    private void PressLetterKey(GridPane gridPane, KeyEvent keyEvent) {
-        if (Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), "")) {
-            setTextFieldText(gridPane, CURRENT_ROW, CURRENT_COLUMN, keyEvent.getText());
-            Label label = getLabel(gridPane, CURRENT_ROW, CURRENT_COLUMN);
+    private void onLetterPressed(GridPane gridPane, KeyEvent keyEvent) {
+        if (Objects.equals(getLabelText(gridPane, CURRENTROW, CURRENT_COLUMN), "")) {
+            setTextFieldText(gridPane, CURRENTROW, CURRENT_COLUMN, keyEvent.getText());
+            Label label = getLabel(gridPane, CURRENTROW, CURRENT_COLUMN);
             ScaleTransition firstScaleTransition = new ScaleTransition(Duration.millis(100), label);
             firstScaleTransition.fromXProperty().setValue(1);
             firstScaleTransition.toXProperty().setValue(1.1);
@@ -151,40 +155,42 @@ public class StudyController extends MyWordControl implements Initializable {
         }
     }
 
-    private void PressBlankSpace(GridPane gridPane) {
-        if ((CURRENT_COLUMN == MAX_COLUMN || CURRENT_COLUMN == 1) && !Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), "")) {
-            setTextFieldText(gridPane, CURRENT_ROW, CURRENT_COLUMN, "");
+    private void onBackSpacePredded(GridPane gridPane) {
+        if ((CURRENT_COLUMN == MAX_COLUMN || CURRENT_COLUMN == 1) && !Objects.equals(getLabelText(gridPane, CURRENTROW, CURRENT_COLUMN), "")) {
+            setTextFieldText(gridPane, CURRENTROW, CURRENT_COLUMN, "");
 
-        } else if ((CURRENT_COLUMN == MAX_COLUMN && Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), ""))
+        } else if ((CURRENT_COLUMN == MAX_COLUMN && Objects.equals(getLabelText(gridPane, CURRENTROW, CURRENT_COLUMN), ""))
                 || (CURRENT_COLUMN > 1 && CURRENT_COLUMN < MAX_COLUMN)) {
             CURRENT_COLUMN--;
-            setTextFieldText(gridPane, CURRENT_ROW, CURRENT_COLUMN, "");
+            setTextFieldText(gridPane, CURRENTROW, CURRENT_COLUMN, "");
         }
     }
 
-    private void PressEnter(GridPane gridPane) {
+    private void onEntterPressed(GridPane gridPane) {
         String word = readWordfromGridPane(gridPane).toLowerCase();
-        if (word.length() == MAX_COLUMN) {
+        if (word.length() != MAX_COLUMN) {
+            return;
+        } else {
             if (word.equals(chooseWord)) {
                 correctLabel.setVisible(true);
                 wrongLabel.setVisible(false);
-                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.7));
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(4.5));
                 pauseTransition.setOnFinished(event -> {
                     updateWordwasStudied(chooseWord);
 
-                    selectWordToStudy++;
-                    if (selectWordToStudy == list.size()) {
+                    selectWordtoStudy++;
+                    if (selectWordtoStudy == list.size()) {
                         return;
                     }
-                    chooseWord = list.get(selectWordToStudy);
-                    chooseWordDef = listDef.get(selectWordToStudy);
+                    chooseWord = list.get(selectWordtoStudy);
+                    chooseWordDef = listDef.get(selectWordtoStudy);
                     questionLabel.setText(chooseWordDef);
                     resetWordCol();
                     correctLabel.setVisible(false);
                 });
                 pauseTransition.play();
-            } else {
-                wrongLabel.setVisible(true);
+            }else{
+               wrongLabel.setVisible(true);
             }
         }
 
@@ -193,19 +199,20 @@ public class StudyController extends MyWordControl implements Initializable {
     private String readWordfromGridPane(GridPane gridPane) {
         StringBuilder word = new StringBuilder();
         for (int i = 1; i <= MAX_COLUMN; i++) {
-            word.append(getLabelText(gridPane, CURRENT_ROW, i));
+            word.append(getLabelText(gridPane, CURRENTROW, i));
         }
         return word.toString();
     }
 
-    private void setTextFieldText(GridPane gridPane, int CURRENT_ROW, int currentCol, String text) {
-        Label label = getLabel(gridPane, CURRENT_ROW, currentCol);
+    private void setTextFieldText(GridPane gridPane, int currentRow, int currentCol, String text) {
+        Label label = getLabel(gridPane, currentRow, currentCol);
         if (label != null) {
             label.setText(text.toUpperCase());
         }
     }
 
     private void resetWordCol() {
+        //checkAns.setVisible(false);
         MAX_COLUMN = chooseWord.length();
         gridPane = createGrid(MAX_COLUMN);
         stackPane.getChildren().remove(0);
@@ -213,7 +220,8 @@ public class StudyController extends MyWordControl implements Initializable {
         gridPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                PressKey(gridPane, keyEvent);
+                System.out.println(3);
+                onKeyPress(gridPane, keyEvent);
             }
         });
         stackPane.getChildren().add(gridPane);
@@ -237,4 +245,9 @@ public class StudyController extends MyWordControl implements Initializable {
     }
 
 
+
+
 }
+
+
+
