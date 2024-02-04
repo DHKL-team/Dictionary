@@ -3,7 +3,7 @@
 
 
 ## Contributors
-- Hoàng Đăng Khải
+- Hoàng Đăng Khải - nhóm trưởng
 - Vũ Việt Hùng
 - Lê Văn Lương
 - Trần Khánh Duy
@@ -50,6 +50,12 @@ Modify options -> Add VM options
 <img width="974" alt="Screenshot 2023-12-05 at 15 38 13" src="https://github.com/DHKL-team/Dictionary/assets/124850786/a55217c1-844a-429d-9376-29c840f9ca42">
 <img width="1030" alt="Screenshot 2023-12-05 at 14 54 46" src="https://github.com/DHKL-team/Dictionary/assets/124850786/990ce9fd-6cb4-40a3-a061-639e7dc6fad5">
 <img width="1031" alt="Screenshot 2023-12-05 at 14 53 28" src="https://github.com/DHKL-team/Dictionary/assets/124850786/cc2b878d-119b-4ce0-a190-5ea43ad00b32">
+![Capture03](https://github.com/DHKL-team/Dictionary/assets/124850786/7da8f669-5385-4092-87b6-c9f133d669b4)
+![Capture04](https://github.com/DHKL-team/Dictionary/assets/124850786/40cc5e77-9784-4bd6-ba61-0458936ec359)
+![Capture05](https://github.com/DHKL-team/Dictionary/assets/124850786/883ce538-946f-4db2-944b-3807875e3a50)
+![Capture01](https://github.com/DHKL-team/Dictionary/assets/124850786/fa47b4de-427f-46f0-b937-b302b378e2a1)
+![Capture02](https://github.com/DHKL-team/Dictionary/assets/124850786/671ad7d5-d32b-40ca-a681-5356b6eaa6a0)
+
 
 
 
