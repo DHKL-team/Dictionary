@@ -13,7 +13,6 @@ public class DatabaseController implements DBInterface {
     public void connectdataBase() {
         try {
             connection = DriverManager.getConnection(db_url, db_user, db_pass);
-            System.out.println("Connected successfully!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
