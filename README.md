@@ -50,9 +50,6 @@ Modify options -> Add VM options
 <img width="974" alt="Screenshot 2023-12-05 at 15 38 13" src="https://github.com/DHKL-team/Dictionary/assets/124850786/a55217c1-844a-429d-9376-29c840f9ca42">
 <img width="1030" alt="Screenshot 2023-12-05 at 14 54 46" src="https://github.com/DHKL-team/Dictionary/assets/124850786/990ce9fd-6cb4-40a3-a061-639e7dc6fad5">
 <img width="1031" alt="Screenshot 2023-12-05 at 14 53 28" src="https://github.com/DHKL-team/Dictionary/assets/124850786/cc2b878d-119b-4ce0-a190-5ea43ad00b32">
-![image](https://github.com/DHKL-team/Dictionary/assets/124850786/d2178102-8f97-47a2-ae09-21bb4a8eca53)
-
-
 
 
 
